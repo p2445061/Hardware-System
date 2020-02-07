@@ -1,4 +1,5 @@
 ﻿using System;
+using HardwareClasses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Hardware_Testing
@@ -11,7 +12,7 @@ namespace Hardware_Testing
         {
             //create an instance of the class we want to create
             clsStock Stock = new clsStock();
-            //test to see the it exists
+            //test to see that exists
             Assert.IsNotNull(Stock);
         }
     }
