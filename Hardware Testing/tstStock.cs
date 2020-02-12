@@ -11,9 +11,9 @@ namespace Hardware_Testing
         public void InstanceOK()
         {
             //create an instance of the class we want to create
-            clsStock Stock = new clsStock();
-            //test to see that exists
-            Assert.IsNotNull(Stock);
+            ClsStock stock = new ClsStock();
+            //test to see that it exists
+            Assert.IsNotNull(stock);
         }
     }
 }

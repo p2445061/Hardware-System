@@ -1,6 +1,6 @@
 ﻿namespace HardwareClasses
 {
-    public class clsStock
+    public class ClsStock
     {
     }
 }
