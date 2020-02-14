@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HardwareClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,19 @@ namespace HardwareFrontOffice
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            clsStock stock = new clsStock();
+            stock = (clsStock)Session["stock"];
+            Response.Write(stock.PartNo);
 
         }
+
+        protected void btnOK_Click(object sender, EventArgs e)
+        {
+            clsStock stock = new clsStock();
+            //stock.PartNo = 
+
+        }
+
+        
     }
 }
