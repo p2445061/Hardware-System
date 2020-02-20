@@ -94,6 +94,18 @@ namespace Hardware_Testing
             Assert.AreEqual(stock.Price, TestData);
         }
 
+        public void FindMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsStock stock = new clsStock();
+            //Boolean variable to store the result of the validation
+            Boolean Found = false;
+            //assign the data to the property
+            Int32 PartNo = 1;
+            //test to see that the two values are the same
+            Assert.IsTrue(Found);
+        }
+
 
 
 

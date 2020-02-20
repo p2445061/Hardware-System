@@ -11,5 +11,9 @@ namespace HardwareClasses
         public object PartDescription { get; set; }
         public int Quantity { get; set; }
         public int Price { get; set; }
+        public bool Find(int PartNo)
+        {
+            return true;
+        }
     }
 }
