@@ -28,5 +28,7 @@ namespace HardwareFrontOffice
 
             Response.Redirect("stock.aspx");
          }
+
+
     }
 }
