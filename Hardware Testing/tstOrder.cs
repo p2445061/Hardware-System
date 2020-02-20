@@ -14,5 +14,45 @@ namespace Hardware_Testing
             //test to see that it exists
             Assert.IsNotNull(AnOrder);
         }
+
+        [TestMethod]
+        public void CustomerIDPropertyOK()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //create some test data to assign to the property
+            int TestData = 10;
+            //assign the data to the property
+            AnOrder.CustomerID = TestData;
+            //test to see that the two values are the same
+            Assert.AreEqual(AnOrder.CustomerID, TestData);
+        }
+
+        [TestMethod]
+        public void StaffIDPropertyOK()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //create some test data to assign to the property
+            int TestData = 10;
+            //assign the data to the property
+            AnOrder.StaffID = TestData;
+            //test to see that the two values are the same
+            Assert.AreEqual(AnOrder.StaffID, TestData);
+
+        }
+
+        [TestMethod]
+        public void OrderIDPropertyOK()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //create some test data to assign to the property
+            int TestData = 10;
+            //assign the data to the property
+            AnOrder.OrderID = TestData;
+            //test to see that the two values are the same
+            Assert.AreEqual(AnOrder.OrderID, TestData);
+        }
     }
 }
