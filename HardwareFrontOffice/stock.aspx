@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="stock.aspx.cs" Inherits="HardwareFrontOffice.stock" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="stock.aspx.cs" Inherits="stock" %>
 
 <!DOCTYPE html>
 

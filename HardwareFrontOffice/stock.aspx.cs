@@ -7,8 +7,6 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 
-namespace HardwareFrontOffice
-{
     public partial class stock : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
@@ -31,4 +29,3 @@ namespace HardwareFrontOffice
 
 
     }
-}
