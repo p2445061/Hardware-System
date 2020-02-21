@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="AnOrderLine.aspx" />
     <Content Include="Default.aspx" />
+
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -88,6 +89,8 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
