@@ -9,7 +9,22 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <p>something</p> 
+            
+            StaffID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:TextBox ID="txtID" runat="server"></asp:TextBox>
+            <br />
+            StaffName&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:TextBox ID="txtName" runat="server"></asp:TextBox>
+            <br />
+            StaffAddress&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="txtAddress" runat="server"></asp:TextBox>
+            <br />
+            StaffDOB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="txtDOB" runat="server"></asp:TextBox>
+            <br />
+            <asp:CheckBox ID="StaffManager" runat="server" />
+            <br />
+            <asp:Button ID="btnOK" runat="server" Text="OK" />&nbsp;
+            <asp:Button ID="btnCan" runat="server" Text="Cancel" />
+            
         </div>
     </form>
 </body>
