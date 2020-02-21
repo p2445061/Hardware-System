@@ -1,4 +1,5 @@
 ﻿using System;
+using HardwareClasses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Hardware_Testing
@@ -26,6 +27,20 @@ namespace Hardware_Testing
             AnOrderLine.PartNo = TestData;
             //test to see that the two values are the same
             Assert.AreEqual(AnOrderLine.PartNo, TestData);
+        }
+
+        [TestMethod]
+        public void OrderIDPropertyOK()
+        {
+            //create an instance of the class we want to create
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            //create some test data to assign to the property
+            int TestData = 10;
+            //assign the data to the property
+            AnOrderLine.OrderID = TestData;
+            //test to see that thetwi vakues are the same
+            Assert.AreEqual(AnOrderLine.OrderID, TestData);
+
         }
 
         [TestMethod]
