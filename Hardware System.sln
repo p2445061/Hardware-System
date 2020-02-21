@@ -12,6 +12,7 @@ EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "HardwareFrontOffice", "HardwareFrontOffice\", "{59EDD393-6ED6-4640-A598-C2B9B0F665D4}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
+		ProjectReferences = "{15d12e75-92f3-48e7-9c5d-9e0129b0f061}|HardwareClasses.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_51449"
 		Debug.AspNetCompiler.PhysicalPath = "HardwareFrontOffice\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_51449\"
@@ -27,6 +28,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "HardwareFrontOffice", "Hard
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "51449"
+		SlnRelativePath = "HardwareFrontOffice\"
 	EndProjectSection
 EndProject
 Global
