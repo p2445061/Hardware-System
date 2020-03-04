@@ -35,10 +35,10 @@ using HardwareClasses;
         //capture date added
         ACostumer.DateAdded = Convert.ToDateTime(testDateAdded.Text);
          //capture the name
-       ACostumer.Name = txtName.txt;
-      //capture the email
-      ACostumer.Email = txtEmail.txt;
-       //store the adress in the session object
+         ACostumer.Name = txtName.txt;
+        //capture the email
+        ACostumer.Email = txtEmail.txt;
+         //store the adress in the session object
          Session["ACostumer"] = ACostumer;
         //capture the date of birth
         ACostumer.DateOfBirth = txtDateOfBirth.txt;
