@@ -19,19 +19,6 @@ namespace Hardware_Testing
 
         }
 
-        [TestMethod]
-        public void ActivePropertOK()
-        {
-            //create an instance of the class we want to create
-            clsCostumer ACostumer = new clsCostumer();
-            //create some test data to assign to the property
-            Boolean TestData = true;
-            //assign the data to the property
-            ACostumer.Active = TestData;
-            //test to see the two values are the same
-            Assert.AreEqual(ACostumer.Active, TestData);
-        }
-
 
         [TestMethod]
         public void DateAddedPropertyOK()
@@ -129,38 +116,6 @@ namespace Hardware_Testing
             //test to see that the two values are the same
             Assert.AreEqual(ACostumer.Town, TestData);
         }
-
-
-        [TestMethod]
-
-        public void TestAddressNoFound()
-        {
-            //create an instance of the class we want to create
-            clsCostumer ACostumer = new clsCostumer();
-            Boolean OK = true;
-            Int32 AddressNo = 21;
-            Found = ACostumer.Find(AddressNo);
-            if(ACostumer.AddressNo != 21)
-            {
-                OK = false;
-
-            }
-            Assert.IsTrue(OK);
-
-        }
-
-
-        public bool Find(int AddressNo)
-        {
-            mAddressNo = 21;
-            return true;
-        }
-
-
-        /// <new code page 21>
-        /// ////////////// 
-        /// </summary>
-        /// 
 
 
         [TestMethod]
