@@ -80,7 +80,7 @@ namespace Hardware_Testing
             string name = "james";
             staff.Name = name;
             Found = staff.Find(name);
-            if (staff.name != "james")
+            if (staff.Name != "james")
             {
                 OK = false;
             }

@@ -75,7 +75,7 @@ namespace HardwareClasses
             DB.Execute("sproc_tblStaff_FilterByID");
             if (DB.Count == 1)
             {
-                mName = Convert.ToDateTime(DB.DataTable.Rows[0]["Name"]);
+                mName = Convert.ToString(DB.DataTable.Rows[0]["Name"]);
                 mDOB = Convert.ToDateTime(DB.DataTable.Rows[0]["DOB"]);
                 mManager = Convert.ToBoolean(DB.DataTable.Rows[0]["Manager"]);
                 mID = Convert.ToInt32(DB.DataTable.Rows[0]["ID"]);
