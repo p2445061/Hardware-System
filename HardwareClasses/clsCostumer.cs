@@ -8,13 +8,6 @@ namespace HardwareClasses
 {
    public class clsCostumer
     {
-        //public string HouseNo { get; set; }
-        //public DateTime DateAdded { get; set; }
-        //public int AddressNo { get; set; }
-        //public int CountyNo { get; set; }
-        //public string PostCode { get; set; }
-        //public string Street { get; set; }
-        //public string Town { get; set; }
 
 
         //private data member for active
@@ -155,17 +148,27 @@ namespace HardwareClasses
 
         public bool Find(int AddressNo)
         {
-            //set the private data members to the test data value
-            mAddressNo = 21;
-            mHouseNo = "123";
-            mStreet = "Test Street";
-            mTown = "Test Town";
-            mPostCode = "XXX XXX";
-            mCountyNo = 1;
-            mDateAdded = Convert.ToDateTime("16/9/2015");
-            mActive = true;
-            //always return true
-            return true;
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@AddressNo",AddressNo);
+            DB.Execute("sprac_tblAddress_FilterByAddressNo");
+            if(DB.Count==1)
+            {
+                mAddressNo = Convert.ToInt32(DB.DataTable.Rows[0]["AddressNo"]);
+                mHouseNo= Convert.ToString(DB.DataTable.Rows[0]["HouseNo"]);
+                mStreet= Convert.ToString(DB.DataTable.Rows[0]["Street"]);
+                mTown= Convert.ToString(DB.DataTable.Rows[0]["Town"]);
+                mPostCode= Convert.ToString(DB.DataTable.Rows[0]["PostCode"]);
+                mCountyNo= Convert.ToString(DB.DataTable.Rows[0]["CountryNo"]);
+                mDateAdded= Convert.ToString(DB.DataTable.Rows[0]["DateAdded"]);
+               mActive = Convert.ToString(DB.DataTable.Rows[0]["Active"]);
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
         }
 
 
