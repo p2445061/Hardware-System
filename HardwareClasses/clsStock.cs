@@ -44,8 +44,8 @@ namespace HardwareClasses
                 msupplierId = value;
             }
         }
-        private object mPartDescription;
-        public object PartDescription { get
+        private string mPartDescription;
+        public string PartDescription { get
             {
                 return mPartDescription;
             }
@@ -90,6 +90,7 @@ namespace HardwareClasses
                 mAvailable = Convert.ToBoolean(DB.DataTable.Rows[0]["Available"]);
                 mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["03/03/2020"]);
                 mPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["Price"]);
+                return true;
             }
             else
             {
