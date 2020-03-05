@@ -59,5 +59,96 @@ namespace Hardware_Testing
             staff.ID = TestData;
             Assert.AreEqual(staff.ID, TestData);
         }
+
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            clsStaff staff = new clsStaff();
+            Boolean Found = false;
+            string name = "james";
+            staff.Name = name;
+            Found = staff.Find(name);
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestNameFound()
+        {
+            clsStaff staff = new clsStaff();
+            Boolean Found = false;
+            Boolean OK = true;
+            string name = "james";
+            staff.Name = name;
+            Found = staff.Find(name);
+            if (staff.name != "james")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestDOBFound()
+        {
+            clsStaff staff = new clsStaff();
+            Boolean Found = false;
+            Boolean OK = true;
+            string name = "james";
+            staff.Name = name;
+            Found = staff.Find(name);
+            if (staff.DOB != Convert.ToDateTime("4/12/1999"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestAddressFound()
+        {
+            clsStaff staff = new clsStaff();
+            Boolean Found = false;
+            Boolean OK = true;
+            string name = "james";
+            staff.Name = name;
+            Found = staff.Find(name);
+            if (staff.Address != "40 glen")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestIDFound()
+        {
+            clsStaff staff = new clsStaff();
+            Boolean Found = false;
+            Boolean OK = true;
+            string name = "james";
+            staff.Name = name;
+            Found = staff.Find(name);
+            if (staff.ID != 1)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestManagerFound()
+        {
+            clsStaff staff = new clsStaff();
+            Boolean Found = false;
+            Boolean OK = true;
+            string name = "james";
+            staff.Name = name;
+            Found = staff.Find(name);
+            if (staff.Manager != true)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
     }
 }

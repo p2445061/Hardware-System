@@ -101,12 +101,139 @@ namespace Hardware_Testing
             //Boolean variable to store the result of the validation
             Boolean Found = false;
             //assign the data to the property
-            Int32 PartNo = 1;
+            Int32 PartNo = 21;
             //test to see that the two values are the same
             Assert.IsTrue(Found);
         }
 
+        public void TestPartNoFound()
+        {
+            //create an instance of the class we want to create
+            clsStock stock = new clsStock();
+            //Boolean variable to store the result of the validation
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //assign the data to the property
+            Int32 PartNo = 21;
+            Found = stock.Find(PartNo);
+            if (stock.PartNo != 21)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
 
+        }
+
+        public void TestDateAddedFound()
+        {
+            //create an instance of the class we want to create
+            clsStock stock = new clsStock();
+            //Boolean variable to store the result of the validation
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //assign the data to the property
+            Int32 PartNo = 21;
+            Found = stock.Find(PartNo);
+            if (stock.DateAdded != Convert.ToDateTime("03/03/2020"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+        public void TestAvailableFound()
+        {
+            //create an instance of the class we want to create
+            clsStock stock = new clsStock();
+            //Boolean variable to store the result of the validation
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //assign the data to the property
+            Int32 PartNo = 21;
+            Found = stock.Find(PartNo);
+            if (stock.Available != true)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+        public void TestSupplierIdFound()
+        {
+            //create an instance of the class we want to create
+            clsStock stock = new clsStock();
+            //Boolean variable to store the result of the validation
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //assign the data to the property
+            Int32 PartNo = 21;
+            Found = stock.Find(PartNo);
+            if (stock.SupplierId != 2525)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+
+        }
+        public void TestPartDescriptionFound()
+        {
+            //create an instance of the class we want to create
+            clsStock stock = new clsStock();
+            //Boolean variable to store the result of the validation
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //assign the data to the property
+            Int32 PartNo = 21;
+            Found = stock.Find(PartNo);
+            if (stock.PartDescription != "Test Part Descreprion")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+        public void TestQuantityFound()
+        {
+            //create an instance of the class we want to create
+            clsStock stock = new clsStock();
+            //Boolean variable to store the result of the validation
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //assign the data to the property
+            Int32 PartNo = 21;
+            Found = stock.Find(PartNo);
+            if (stock.Quantity != 1)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+        public void TestPriceFound()
+        {
+            //create an instance of the class we want to create
+            clsStock stock = new clsStock();
+            //Boolean variable to store the result of the validation
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //assign the data to the property
+            Int32 PartNo = 21;
+            Found = stock.Find(PartNo);
+            if (stock.Price != 1.1)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
 
 
 

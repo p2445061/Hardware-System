@@ -1,20 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace HardwareClasses
-{
     public class clsDataConnection
     {
         //connection object used to connect to the database
         SqlConnection connectionToDB = new SqlConnection();
         //data adapter used to transfer data to and from the database
         SqlDataAdapter dataChannel = new SqlDataAdapter();
-        //ado.net class for building the sql commands    
+
         SqlCommandBuilder commandBuilder = new SqlCommandBuilder();
         //stores a list of all of the sql parameters
         List<SqlParameter> SQLParams = new List<SqlParameter>();
@@ -25,14 +16,7 @@ namespace HardwareClasses
 
         public clsDataConnection()
         {
-            connectionString = GetConnectionString();
-        }
 
-        private string GetConnectionString()
-        {
-            System.Net.WebClient client = new System.Net.WebClient();
-            string downloadString = client.DownloadString("http://localhost:5000/");
-            return downloadString;
         }
 
         public string GetDBName()
@@ -211,4 +195,4 @@ namespace HardwareClasses
             }
         }
     }
-}
+

@@ -9,16 +9,16 @@ namespace Hardware_Testing
         [TestMethod]
         public void InstanceOK()
         {
-            //create an instance of the class we want to create
+            //Create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             //test to see that it exists
             Assert.IsNotNull(AnOrder);
         }
 
         [TestMethod]
-        public void CustomerIDPropertyOK()
+        public void CustomerID()
         {
-            //create an instance of the class we want to create
+            //Create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             //create some test data to assign to the property
             int TestData = 10;
@@ -29,9 +29,9 @@ namespace Hardware_Testing
         }
 
         [TestMethod]
-        public void StaffIDPropertyOK()
+        public void StaffID()
         {
-            //create an instance of the class we want to create
+            //Create an instance of the ckass we want to create
             clsOrder AnOrder = new clsOrder();
             //create some test data to assign to the property
             int TestData = 10;
@@ -39,11 +39,10 @@ namespace Hardware_Testing
             AnOrder.StaffID = TestData;
             //test to see that the two values are the same
             Assert.AreEqual(AnOrder.StaffID, TestData);
-
         }
 
         [TestMethod]
-        public void OrderIDPropertyOK()
+        public void OrderID()
         {
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
@@ -51,8 +50,9 @@ namespace Hardware_Testing
             int TestData = 10;
             //assign the data to the property
             AnOrder.OrderID = TestData;
-            //test to see that the two values are the same
+            //test to see that the twi values are the same
             Assert.AreEqual(AnOrder.OrderID, TestData);
         }
     }
+
 }
