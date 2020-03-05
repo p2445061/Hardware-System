@@ -227,7 +227,7 @@ namespace Hardware_Testing
             //assign the data to the property
             Int32 PartNo = 21;
             Found = stock.Find(PartNo);
-            if (stock.Price != 1.1)
+            if (stock.Price != 1)
             {
                 OK = false;
             }
