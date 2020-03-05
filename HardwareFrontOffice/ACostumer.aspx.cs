@@ -30,4 +30,37 @@ public partial class ACostumer : System.Web.UI.Page
         //redirect to the viewer page
         Response.Write("CostumerViewer.aspx");
     }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        clsCostumer ACostumer = new clsCostumer();
+        Int32 HouseNo;
+        Boolean Found = false;
+        HouseNo = Convert.ToInt32(txtHouseNo.Text);
+
+        Found = ACostumer.Find(HouseNo);
+
+        if(Found== true)
+        {
+            txtHouseNo.Text = ACostumer.HouseNo;
+            txtStreet.Text = ACostumer.Street;
+            txtTown.Text = ACostumer.Town;
+            txtPostCode.Text = ACostumer.PostCode;
+            txtCountry.Text = ACostumer.CountyNo.ToString();
+            txtDateOfBirth.
+            //txtName.Text = ACostumer.Name.ToString();
+           // lblDateAdded.Text = ACostumer.DateAdded.ToString();
+            //txtEmail.Text = ACostumer
+
+
+
+        }
+
+
+    }
+
+    protected void txtName_TextChanged(object sender, EventArgs e)
+    {
+
+    }
 }
