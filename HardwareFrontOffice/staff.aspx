@@ -22,7 +22,7 @@
             <br />
             <asp:CheckBox ID="StaffManager" runat="server" />
             <br />
-            <asp:Button ID="btnOK" runat="server" Text="OK" />&nbsp;
+            <asp:Button ID="btnOK" runat="server" Text="OK" OnClick="btnOK_Click" />&nbsp;
             <asp:Button ID="btnCan" runat="server" Text="Cancel" />
             
         </div>

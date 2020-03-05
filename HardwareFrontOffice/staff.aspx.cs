@@ -22,7 +22,7 @@ using HardwareClasses;
         staff.Name = txtName.Text;
         staff.Address = txtAddress.Text;
         staff.DOB = Convert.ToDateTime(txtDOB.Text);
-        staff.Manager = StaffManager.Bit;
+        staff.Manager = StaffManager.Checked;
         Session["staff"] = staff;
         Response.Redirect("StaffViewer.aspx");
         }
