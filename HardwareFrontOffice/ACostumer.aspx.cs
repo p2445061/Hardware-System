@@ -19,7 +19,7 @@ public partial class ACostumer : System.Web.UI.Page
 
     }
 
-    protected void btnOK_Click(object sender, EventsArgs e)
+    protected void btnOK_Click(object sender, EventArgs e)
     {
         //created a new instance of clsCostumer
         clsCostumer ACostumer = new clsCostumer();
