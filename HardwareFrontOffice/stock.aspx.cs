@@ -63,10 +63,10 @@ using System.Web.UI.WebControls.WebParts;
         if (Found == true)
         {
             txtPartDescription.Text = stock.PartDescription;
-            //txtSupplier.Text = stock.SupplierId;
-            //txtPrice.Text = stock.Price;
-            //txtDate.Text = stock.DateAdded;
-            //txtQuantity.Text = stock.Quantity;
+            txtSupplier.Text = stock.SupplierId.ToString();
+            txtPrice.Text = stock.Price.ToString();
+            txtDate.Text = stock.DateAdded.ToString();
+            txtQuantity.Text = stock.Quantity.ToString();
 
 
 

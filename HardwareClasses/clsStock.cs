@@ -1,11 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace HardwareClasses
 {
     public class clsStock
     {
         private Boolean mAvailable;
-        public bool Available { get
+        public bool Available
+        {
+            get
             {
                 return mAvailable;
             }
@@ -15,7 +20,9 @@ namespace HardwareClasses
             }
         }
         private DateTime mDateAdded;
-        public DateTime DateAdded { get
+        public DateTime DateAdded
+        {
+            get
             {
                 return mDateAdded;
             }
@@ -26,7 +33,10 @@ namespace HardwareClasses
             }
         }
         private Int32 mPartNo;
-        public Int32 PartNo { get {
+        public Int32 PartNo
+        {
+            get
+            {
                 return mPartNo;
             }
             set
@@ -35,7 +45,9 @@ namespace HardwareClasses
             }
         }
         private Int32 msupplierId;
-        public int SupplierId { get
+        public int SupplierId
+        {
+            get
             {
                 return msupplierId;
             }
@@ -45,7 +57,9 @@ namespace HardwareClasses
             }
         }
         private string mPartDescription;
-        public string PartDescription { get
+        public string PartDescription
+        {
+            get
             {
                 return mPartDescription;
             }
@@ -55,7 +69,9 @@ namespace HardwareClasses
             }
         }
         private Int32 mQuantity;
-        public int Quantity { get
+        public int Quantity
+        {
+            get
             {
                 return mQuantity;
             }
@@ -66,7 +82,9 @@ namespace HardwareClasses
             }
         }
         private decimal mPrice;
-        public decimal Price { get
+        public decimal Price
+        {
+            get
             {
                 return mPrice;
             }
@@ -98,7 +116,33 @@ namespace HardwareClasses
                 return false;
 
             }
+
         }
 
+      
+        public string Valid(string partNo, string quantity, string partDescription, string supplierId, string price, string dateAdded)
+        {
+            String Error = "";
+
+            if (partNo.Length == 0)
+            {
+                Error = Error + "The partNo may not be blank: ";
+            }
+
+            if (partNo.Length > 6)
+            {
+                Error = Error + "ThepartNo must be less than 6 characters: ";
+            }
+
+            //DateTemp = Convert.ToDateTime(dateAdded);
+           // if (DateTemp < DateTime.Now.Date)
+           // {
+            //    Error = Error + "ThepartNo must be less than 6 characters: ";
+           // }
+
+            return Error;
+        }
     }
 }
+    
+  

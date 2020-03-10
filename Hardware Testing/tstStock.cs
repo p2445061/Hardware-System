@@ -7,6 +7,13 @@ namespace Hardware_Testing
     [TestClass]
     public class tstStock
     {
+        string partNo = "1";
+        string quantity = "2";
+        string partDescription = "MONITOR";
+        string supplierId = "2525";
+        string price = "2";
+        string dateAdded = DateTime.Now.Date.ToString();
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -44,7 +51,7 @@ namespace Hardware_Testing
         }
 
         [TestMethod]
-        public void SupplierIdOK()
+        public void SupplierIdPropertyOK()
         {
             //create an instance of the class we want to create
             clsStock stock = new clsStock();
@@ -56,7 +63,7 @@ namespace Hardware_Testing
             Assert.AreEqual(stock.SupplierId, TestData);
         }
         [TestMethod]
-        public void PartDescriptionOK()
+        public void PartDescriptionPropertyOK()
         {
             //create an instance of the class we want to create
             clsStock stock = new clsStock();
@@ -69,7 +76,7 @@ namespace Hardware_Testing
         }
 
         [TestMethod]
-        public void QuantityOK()
+        public void QuantityPropertyOK()
         {
             //create an instance of the class we want to create
             clsStock stock = new clsStock();
@@ -82,7 +89,7 @@ namespace Hardware_Testing
         }
 
         [TestMethod]
-        public void PriceOK()
+        public void PricePropertyOK()
         {
             //create an instance of the class we want to create
             clsStock stock = new clsStock();
@@ -94,6 +101,7 @@ namespace Hardware_Testing
             Assert.AreEqual(stock.Price, TestData);
         }
 
+        [TestMethod]
         public void FindMethodOK()
         {
             //create an instance of the class we want to create
@@ -106,6 +114,7 @@ namespace Hardware_Testing
             Assert.IsTrue(Found);
         }
 
+        [TestMethod]
         public void TestPartNoFound()
         {
             //create an instance of the class we want to create
@@ -125,6 +134,7 @@ namespace Hardware_Testing
 
         }
 
+        [TestMethod]
         public void TestDateAddedFound()
         {
             //create an instance of the class we want to create
@@ -143,6 +153,8 @@ namespace Hardware_Testing
             Assert.IsTrue(OK);
 
         }
+
+        [TestMethod]
         public void TestAvailableFound()
         {
             //create an instance of the class we want to create
@@ -161,6 +173,8 @@ namespace Hardware_Testing
             Assert.IsTrue(OK);
 
         }
+
+        [TestMethod]
         public void TestSupplierIdFound()
         {
             //create an instance of the class we want to create
@@ -180,6 +194,8 @@ namespace Hardware_Testing
 
 
         }
+
+        [TestMethod]
         public void TestPartDescriptionFound()
         {
             //create an instance of the class we want to create
@@ -198,6 +214,8 @@ namespace Hardware_Testing
             Assert.IsTrue(OK);
 
         }
+
+        [TestMethod]
         public void TestQuantityFound()
         {
             //create an instance of the class we want to create
@@ -216,6 +234,8 @@ namespace Hardware_Testing
             Assert.IsTrue(OK);
 
         }
+
+        [TestMethod]
         public void TestPriceFound()
         {
             //create an instance of the class we want to create
@@ -234,6 +254,112 @@ namespace Hardware_Testing
             Assert.IsTrue(OK);
 
         }
+
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            clsStock stock = new clsStock();
+            string Error = "";
+            Error = stock.Valid(partNo, quantity, partDescription, supplierId, price, dateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PartNoMinLessOne()
+        {
+            clsStock stock = new clsStock();
+            String Error = "";
+            string PartNo = "";
+            Error = stock.Valid(partNo, quantity, partDescription, supplierId, price, dateAdded);
+            Assert.AreNotEqual(Error, "");     
+        }
+
+        [TestMethod]
+        public void PartNoMin()
+        {
+            clsStock stock = new clsStock();
+            String Error = "";
+            string PartNo = "a";
+            Error = stock.Valid(partNo, quantity, partDescription, supplierId, price, dateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PartNoMinPlusOne()
+        {
+            clsStock stock = new clsStock();
+            String Error = "";
+            string PartNo = "aa";
+            Error = stock.Valid(partNo, quantity, partDescription, supplierId, price, dateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PartNoMaxLessOne()
+        {
+            clsStock stock = new clsStock();
+            String Error = "";
+            string PartNo = "aaaaa";
+            Error = stock.Valid(partNo, quantity, partDescription, supplierId, price, dateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PartNoMax()
+        {
+            clsStock stock = new clsStock();
+            String Error = "";
+            string PartNo = "aaaaaa";
+            Error = stock.Valid(partNo, quantity, partDescription, supplierId, price, dateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PartNoMid()
+        {
+            clsStock stock = new clsStock();
+            String Error = "";
+            string PartNo = "aaa";
+            Error = stock.Valid(partNo, quantity, partDescription, supplierId, price, dateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PartNoMaxPlusOne()
+        {
+            clsStock stock = new clsStock();
+            String Error = "";
+            string PartNo = "aaaaaaa";
+            Error = stock.Valid(partNo, quantity, partDescription, supplierId, price, dateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PartNoExtremeMax()
+        {
+            clsStock stock = new clsStock();
+            String Error = "";
+            string PartNo = "";
+            PartNo = PartNo.PadRight(500, 'a');
+            Error = stock.Valid(partNo, quantity, partDescription, supplierId, price, dateAdded);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateAddedExtremeMax()
+        {
+            clsStock stock = new clsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(-100);
+            //string DateAdded = TestDate.ToString();
+            Error = stock.Valid(partNo, quantity, partDescription, supplierId, price, dateAdded);
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+
 
 
 

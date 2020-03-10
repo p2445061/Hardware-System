@@ -158,9 +158,9 @@ namespace HardwareClasses
                 mStreet= Convert.ToString(DB.DataTable.Rows[0]["Street"]);
                 mTown= Convert.ToString(DB.DataTable.Rows[0]["Town"]);
                 mPostCode= Convert.ToString(DB.DataTable.Rows[0]["PostCode"]);
-                mCountyNo= Convert.ToString(DB.DataTable.Rows[0]["CountryNo"]);
-                mDateAdded= Convert.ToString(DB.DataTable.Rows[0]["DateAdded"]);
-               mActive = Convert.ToString(DB.DataTable.Rows[0]["Active"]);
+                //mCountyNo= Convert.ToString(DB.DataTable.Rows[0]["CountryNo"]);
+                //mDateAdded= Convert.ToString(DB.DataTable.Rows[0]["DateAdded"]);
+                //mActive = Convert.ToString(DB.DataTable.Rows[0]["Active"]);
 
                 return true;
             }
