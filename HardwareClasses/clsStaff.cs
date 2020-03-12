@@ -68,17 +68,18 @@ namespace HardwareClasses
             }
         }
 
-        public bool Find(String name)
+        public bool Find(int id)
         {
-            clsDataConnection DB = new clsDataConnection(); mName = "james";
+            clsDataConnection DB = new clsDataConnection();
+            mID = 1;
             DB.AddParameter("@ID", ID);
             DB.Execute("sproc_tblStaff_FilterByID");
             if (DB.Count == 1)
             {
+                mID = Convert.ToInt32(DB.DataTable.Rows[0]["ID"]);
                 mName = Convert.ToString(DB.DataTable.Rows[0]["Name"]);
                 mDOB = Convert.ToDateTime(DB.DataTable.Rows[0]["DOB"]);
                 mManager = Convert.ToBoolean(DB.DataTable.Rows[0]["Manager"]);
-                mID = Convert.ToInt32(DB.DataTable.Rows[0]["ID"]);
                 mAddress = Convert.ToString(DB.DataTable.Rows[0]["Address"]);
                 return true;
             }
@@ -86,6 +87,41 @@ namespace HardwareClasses
             {
                 return false;
             }
+        }
+
+        public string Valid(string ID, string Name, string Address, string DOB, string Manager)
+        {
+            string Error = "";
+
+            if (Name.Length == 0)
+            {
+                Error += "The name may not be blank : ";
+            }
+            if (Name.Length > 50)
+            {
+                Error += "The name must be less than 51 characters : ";
+            }
+            if (Address.Length == 0)
+            {
+                Error += "The address may not be blank : ";
+            }
+            if (Address.Length > 50)
+            {
+                Error += "The address must be less than 51 characters : ";
+            }
+            try
+            {
+                DateTime DateTemp = Convert.ToDateTime(DOB);
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error += "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                Error += "The date was not a valid date : ";
+            }
+            return Error;
         }
     }
 }

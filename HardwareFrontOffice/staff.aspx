@@ -12,6 +12,7 @@
             
             StaffID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:TextBox ID="txtID" runat="server"></asp:TextBox>
+            <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" />
             <br />
             StaffName&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:TextBox ID="txtName" runat="server"></asp:TextBox>
@@ -21,6 +22,8 @@
             StaffDOB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="txtDOB" runat="server"></asp:TextBox>
             <br />
             <asp:CheckBox ID="StaffManager" runat="server" />
+            <br />
+            <asp:Label ID="lblError" runat="server" Text=" "></asp:Label>
             <br />
             <asp:Button ID="btnOK" runat="server" Text="OK" OnClick="btnOK_Click" />&nbsp;
             <asp:Button ID="btnCan" runat="server" Text="Cancel" />
