@@ -8,31 +8,22 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        House No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="txtHouseNo" runat="server"></asp:TextBox>
+        CostumerId&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:TextBox ID="txtCostumerId" runat="server" style="height: 22px" OnTextChanged="txtCostumerId_TextChanged"></asp:TextBox>
         <asp:Button ID="btnFind" runat="server" Height="27px" OnClick="Button2_Click" Text="Find" Width="60px" />
         <br />
-        Street&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="txtStreet" runat="server"></asp:TextBox>
+        Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="txtName" runat="server" style="height: 22px"></asp:TextBox>
         <br />
-        Town&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="txtTown" runat="server"></asp:TextBox>
-        <br />
-        Post Code&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="txtPostCode" runat="server"></asp:TextBox>
-        <br />
-        Country&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="txtCountry" runat="server"></asp:TextBox>
-        <br />
-        Date Added&nbsp;&nbsp;&nbsp; <asp:TextBox ID="lblDateAdded" runat="server" EnableTheming="False"></asp:TextBox>
-        <br />
-        Date Of Birth&nbsp;
+        Date Of Birth&nbsp; &nbsp;
         <asp:TextBox ID="txtDateOfBirth" runat="server"></asp:TextBox>
         <br />
-        Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="txtName" runat="server" OnTextChanged="txtName_TextChanged"></asp:TextBox>
+        Address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:TextBox ID="txtAddress" runat="server" OnTextChanged="txtName_TextChanged"></asp:TextBox>
         <br />
-        Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
         <br />
-        Active&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="txtActive" runat="server"></asp:TextBox>
+        <asp:CheckBox ID="Active" runat="server" OnCheckedChanged="CheckBox1_CheckedChanged" />
         <br />
         <asp:Button ID="Button1" runat="server" Text="Button" />
         <br />

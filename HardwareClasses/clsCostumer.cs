@@ -28,19 +28,19 @@ namespace HardwareClasses
         }
 
         //private date added data member
-        private DateTime mDateAdded;
+        private DateTime mDateofBirth;
         //public property for date added
-        public DateTime DateAdded
+        public DateTime DateOfBirth
         {
             get
             {
                 //return the private data
-                return mDateAdded;
+                return mDateofBirth;
             }
             set
             {
                 //set the private data
-                mDateAdded = value;
+                mDateofBirth = value;
             }
         }
 
@@ -61,88 +61,52 @@ namespace HardwareClasses
             }
         }
 
-        //private data member for county no
-        private Int32 mCountyNo;
-        //public property for county no
-        public int CountyNo
-        {
-            get
-            {
-                //return the private data
-                return mCountyNo;
-            }
-            set
-            {
-                //set the private data
-                mCountyNo = value;
-            }
-        }
 
-        //private data member for HouseNo
-        private string mHouseNo;
-        //public property for house no
-        public string HouseNo
-        {
-            get
-            {
-                //return private data
-                return mHouseNo;
-            }
-            set
-            {
-                //set the private data
-                mHouseNo = value;
-            }
-        }
-
-        //private data member for post code
-        private string mPostCode;
-        //public property for post code
-        public string PostCode
-        {
-            get
-            {
-                //return the private data
-                return mPostCode;
-            }
-            set
-            {
-                //set the private data
-                mPostCode = value;
-            }
-        }
-
-        //private data member for street
-        private string mStreet;
-        //public data member for street
-        public string Street
-        {
-            get
-            {
-                //return the private data
-                return mStreet;
-            }
-            set
-            {
-                //set the private data
-                mStreet = value;
-            }
-        }
-
-        //private data member for town
-        private string mTown;
+        private string mEmail;
         //public data member for Town
-        public string Town
+        public string Email
         {
             get
             {
                 //return the private data
-                return mTown;
+                return mEmail;
             }
             set
             {
                 //set the private data
-                mTown = value;
+                mEmail = value;
+            }
+        }
+
+        private string mName;
+        //public data member for Town
+        public string Name
+        {
+            get
+            {
+                //return the private data
+                return mName;
+            }
+            set
+            {
+                //set the private data
+                mName = value;
+            }
+        }
+
+        private string mCostumerID;
+        //public data member for Town
+        public string CostumerID
+        {
+            get
+            {
+                //return the private data
+                return mCostumerID;
+            }
+            set
+            {
+                //set the private data
+                mCostumerID = value;
             }
         }
 
@@ -154,13 +118,10 @@ namespace HardwareClasses
             if(DB.Count==1)
             {
                 mAddressNo = Convert.ToInt32(DB.DataTable.Rows[0]["AddressNo"]);
-                mHouseNo= Convert.ToString(DB.DataTable.Rows[0]["HouseNo"]);
-                mStreet= Convert.ToString(DB.DataTable.Rows[0]["Street"]);
-                mTown= Convert.ToString(DB.DataTable.Rows[0]["Town"]);
-                mPostCode= Convert.ToString(DB.DataTable.Rows[0]["PostCode"]);
-                //mCountyNo= Convert.ToString(DB.DataTable.Rows[0]["CountryNo"]);
-                //mDateAdded= Convert.ToString(DB.DataTable.Rows[0]["DateAdded"]);
-                //mActive = Convert.ToString(DB.DataTable.Rows[0]["Active"]);
+                mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
+                mName= Convert.ToString(DB.DataTable.Rows[0]["Active"]);
+                mDateofBirth= Convert.ToDateTime(DB.DataTable.Rows[0]["Active"]);
+                mEmail= Convert.ToString(DB.DataTable.Rows[0]["Active"]);
 
                 return true;
             }
