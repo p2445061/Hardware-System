@@ -15,42 +15,52 @@ public partial class ACostumer : System.Web.UI.Page
         //get the data from the session object
         ACostumer = (clsCostumer)Session["ACostumer"];
         //display the house number for this entry
-        Response.Write(ACostumer.HouseNo);
+        Response.Write(ACostumer.CostumerID);
 
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
-        //created a new instance of clsCostumer
+        //create a new instance of clsAddress();
         clsCostumer ACostumer = new clsCostumer();
-        //capture the house no
-        ACostumer.HouseNo = txtHouseNo.Text;
-        //store the address in the session object
+        //capture the address
+        ACostumer.AddressNo = Convert.ToInt32(txtAddress.Text);
+        //capture the name
+        ACostumer.Name = txtName.Text;
+        //capture the email
+        ACostumer.Email = txtEmail.Text;
+        //capture active
+        ACostumer.Active = Active.Checked;
+        //store the adress in the session object
         Session["ACostumer"] = ACostumer;
-        //redirect to the viewer page
-        Response.Write("CostumerViewer.aspx");
+        //capture the date of birth
+        ACostumer.DateOfBirth = Convert.ToDateTime(txtDateOfBirth.Text);
+        //capture the id
+        ACostumer.CostumerID = txtCostumerId.Text;
+
+
+        //redirect to the viwer page
+        Response.Write("AddressViewer.aspx");
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
     {
         clsCostumer ACostumer = new clsCostumer();
-        Int32 HouseNo;
+        Int32 CostumerID;
         Boolean Found = false;
-        HouseNo = Convert.ToInt32(txtHouseNo.Text);
+        CostumerID = Convert.ToInt32(txtCostumerId.Text);
 
-        Found = ACostumer.Find(HouseNo);
+        Found = ACostumer.Find(CostumerID);
 
         if(Found== true)
         {
-            txtHouseNo.Text = ACostumer.HouseNo;
-            txtStreet.Text = ACostumer.Street;
-            txtTown.Text = ACostumer.Town;
-            txtPostCode.Text = ACostumer.PostCode;
-            txtCountry.Text = ACostumer.CountyNo.ToString();
-            txtDateOfBirth.
-            //txtName.Text = ACostumer.Name.ToString();
-           // lblDateAdded.Text = ACostumer.DateAdded.ToString();
-            //txtEmail.Text = ACostumer
+           
+            Active.Checked = ACostumer.Active;
+            txtDateOfBirth.Text = "" + ACostumer.DateOfBirth;
+            txtEmail.Text = ACostumer.Email.ToString();
+            txtAddress.Text = ACostumer.ToString();
+            txtName.Text = ACostumer.ToString();
+            
 
 
 
@@ -59,8 +69,7 @@ public partial class ACostumer : System.Web.UI.Page
 
     }
 
-    protected void txtName_TextChanged(object sender, EventArgs e)
-    {
+    
 
-    }
+    
 }
