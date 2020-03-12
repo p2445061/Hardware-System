@@ -23,18 +23,32 @@ using System.Web.UI.WebControls.WebParts;
     protected void btnOK_Click(object sender, EventArgs e)
         {
             clsStock stock = new clsStock();
+        string PartNo = txtPartNo.Text;
+        string PartDescription = txtPartDescription.Text;
+        string Price = txtPrice.Text;
+        string DateAdded = txtDate.Text;
+        string Quantity = txtQuantity.Text;
+        string Error = "";
+        Error = stock.Valid(PartNo, Quantity, PartDescription, Price, DateAdded);
+        if (Error == "")
+        {
             stock.PartNo = Convert.ToInt32(this.txtPartNo.Text);
-      
-        stock.SupplierId = Convert.ToInt32(this.txtSupplier.Text);
-        stock.PartDescription = txtPartDescription.Text;
-        stock.Price = Convert.ToInt32(this.txtPrice.Text);
-        stock.DateAdded = Convert.ToDateTime(txtDate.Text);
-        stock.Quantity = Convert.ToInt32(this.txtQuantity.Text);
+            stock.SupplierId = Convert.ToInt32(this.txtSupplier.Text);
+            stock.PartDescription = txtPartDescription.Text;
+            stock.Price = Convert.ToInt32(this.txtPrice.Text);
+            stock.DateAdded = Convert.ToDateTime(txtDate.Text);
+            stock.Quantity = Convert.ToInt32(this.txtQuantity.Text);
 
+            Session["stock"] = stock;
+            Response.Write("StockViewer");
 
-        Session["stock"] = stock;
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
 
-            Response.Redirect("stock.aspx");
+       
          }
 
 
@@ -67,9 +81,6 @@ using System.Web.UI.WebControls.WebParts;
             txtPrice.Text = stock.Price.ToString();
             txtDate.Text = stock.DateAdded.ToString();
             txtQuantity.Text = stock.Quantity.ToString();
-
-
-
 
         }
     }

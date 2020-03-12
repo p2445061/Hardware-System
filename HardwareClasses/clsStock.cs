@@ -44,6 +44,12 @@ namespace HardwareClasses
                 mPartNo = value;
             }
         }
+
+        public string Valid(string partNo, string quantity, string partDescription, string price, string dateAdded)
+        {
+            throw new NotImplementedException();
+        }
+
         private Int32 msupplierId;
         public int SupplierId
         {
@@ -119,7 +125,7 @@ namespace HardwareClasses
 
         }
 
-      
+
         public string Valid(string partNo, string quantity, string partDescription, string supplierId, string price, string dateAdded)
         {
             String Error = "";
@@ -134,14 +140,54 @@ namespace HardwareClasses
                 Error = Error + "ThepartNo must be less than 6 characters: ";
             }
 
-            //DateTemp = Convert.ToDateTime(dateAdded);
-           // if (DateTemp < DateTime.Now.Date)
-           // {
-            //    Error = Error + "ThepartNo must be less than 6 characters: ";
-           // }
+            try
+            {
+                DateTime DateTemp = Convert.ToDateTime(dateAdded);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the past: ";
+                }
+
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the future: ";
+                }
+
+            }
+
+            catch
+            {
+                Error = Error + "The date was not a valid date : ";
+            }
+
+            if (partDescription.Length == 0)
+            {
+                Error = Error + "The part description may not be blank : ";
+            }
+
+            if (PartDescription.Length > 9)
+            {
+                Error = Error + "The Part Description must be less than 9 characters : ";
+            }
+
+            if (Quantity == 0)
+            {
+                Error = Error + "The quantity may not be blank: ";
+            }
+
+            if (Price == 0)
+            {
+                Error = Error + "The Price may not be blank: ";
+
+            }
+
+
+
 
             return Error;
-        }
+            }
+            
+            
     }
 }
     

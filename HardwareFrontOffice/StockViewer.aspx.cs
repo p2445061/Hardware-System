@@ -20,8 +20,7 @@ public partial class StockViewer : System.Web.UI.Page
     {
         clsStock stock = new clsStock();
 
-        stock.PartNo = txtPartNo.Text;
-        stock.SupplierId = Convert.ToInt32(this.txtSupplier.Text);
+        stock.PartNo = Convert.ToInt32(this.txtPartNo.Text);
         stock.PartDescription = txtPartDescription.Text;
         stock.Price = Convert.ToInt32(this.txtPrice.Text);
         stock.DateAdded = Convert.ToDateTime(txtDate.Text);

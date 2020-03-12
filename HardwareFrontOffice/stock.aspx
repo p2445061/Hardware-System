@@ -32,6 +32,8 @@
             <asp:CheckBox ID="btnYes" runat="server" OnCheckedChanged="CheckBox1_CheckedChanged" Text="Yes" />
             <asp:CheckBox ID="btnNo" runat="server" OnCheckedChanged="btnNo_CheckedChanged" Text="No" />
             <br />
+            <asp:Label ID="lblError" runat="server" Text="[lblError]"></asp:Label>
+            <br />
             <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" style="height: 26px" />
             <br />
         </div>

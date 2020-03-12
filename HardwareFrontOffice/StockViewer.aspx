@@ -12,9 +12,6 @@
             PartNo
             <asp:TextBox ID="txtPartNo" runat="server" OnTextChanged="btnOK_Click"></asp:TextBox>
             <br />
-            SupplierId
-            <asp:TextBox ID="txtSupplier" runat="server" OnTextChanged="btnOK_Click"></asp:TextBox>
-            <br />
             Part Description 
             <asp:TextBox ID="txtPartDescription" runat="server" OnTextChanged="btnOK_Click"></asp:TextBox>
             <br />
