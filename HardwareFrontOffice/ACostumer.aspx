@@ -9,16 +9,16 @@
 <body>
     <form id="form1" runat="server">
         CostumerId&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="txtCostumerId" runat="server" style="height: 22px" OnTextChanged="txtCostumerId_TextChanged"></asp:TextBox>
+        <asp:TextBox ID="txtCostumerID" runat="server" style="height: 22px" OnTextChanged="txtCostumerId_TextChanged"></asp:TextBox>
         <asp:Button ID="btnFind" runat="server" Height="27px" OnClick="Button2_Click" Text="Find" Width="60px" />
         <br />
         Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="txtName" runat="server" style="height: 22px"></asp:TextBox>
         <br />
         Date Of Birth&nbsp; &nbsp;
-        <asp:TextBox ID="txtDateOfBirth" runat="server"></asp:TextBox>
+        <asp:TextBox ID="txtCostumerDOB" runat="server"></asp:TextBox>
         <br />
         Address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="txtAddress" runat="server" OnTextChanged="txtName_TextChanged"></asp:TextBox>
+        <asp:TextBox ID="txtCostumerAddress" runat="server" OnTextChanged="txtName_TextChanged"></asp:TextBox>
         <br />
         Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
