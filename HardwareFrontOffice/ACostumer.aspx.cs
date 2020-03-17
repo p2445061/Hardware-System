@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+//using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -23,24 +23,24 @@ public partial class ACostumer : System.Web.UI.Page
     {
         //create a new instance of clsAddress();
         clsCostumer ACostumer = new clsCostumer();
-        //capture the address
-        ACostumer.AddressNo = Convert.ToInt32(txtAddress.Text);
-        //capture the name
+       
+        ACostumer.CostumerAddress = Convert.ToInt32(txtCostumerAddress.Text);
+   
         ACostumer.Name = txtName.Text;
-        //capture the email
+        
         ACostumer.Email = txtEmail.Text;
-        //capture active
+        
         ACostumer.Active = Active.Checked;
-        //store the adress in the session object
+        
         Session["ACostumer"] = ACostumer;
-        //capture the date of birth
-        ACostumer.DateOfBirth = Convert.ToDateTime(txtDateOfBirth.Text);
-        //capture the id
-        ACostumer.CostumerID = txtCostumerId.Text;
+        
+        ACostumer.CostumerDOB = Convert.ToDateTime(txtCostumerDOB.Text);
+        
+        ACostumer.CostumerID = txtCostumerID.Text;
 
 
         //redirect to the viwer page
-        Response.Write("AddressViewer.aspx");
+        Response.Write("CostumerViewer.aspx");
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
@@ -48,7 +48,7 @@ public partial class ACostumer : System.Web.UI.Page
         clsCostumer ACostumer = new clsCostumer();
         Int32 CostumerID;
         Boolean Found = false;
-        CostumerID = Convert.ToInt32(txtCostumerId.Text);
+        CostumerID = Convert.ToInt32(txtCostumerID.Text);
 
         Found = ACostumer.Find(CostumerID);
 
@@ -56,10 +56,11 @@ public partial class ACostumer : System.Web.UI.Page
         {
            
             Active.Checked = ACostumer.Active;
-            txtDateOfBirth.Text = "" + ACostumer.DateOfBirth;
+            txtCostumerDOB.Text = "" + ACostumer.DateOfBirth;
             txtEmail.Text = ACostumer.Email.ToString();
-            txtAddress.Text = ACostumer.ToString();
+            txtCostumerAddress.Text = ACostumer.ToString();
             txtName.Text = ACostumer.ToString();
+            txtCostumerID = ACostumer.ToString();
             
 
 

@@ -1,17 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Text;
 
 
 namespace HardwareClasses
 {
    public class clsCostumer
     {
-
-
-        //private data member for active
         private Boolean mActive;
+
+
+
         //public property for active
         public bool Active
         {
@@ -28,36 +28,36 @@ namespace HardwareClasses
         }
 
         //private date added data member
-        private DateTime mDateofBirth;
+        private DateTime mCostumerDOB;
         //public property for date added
-        public DateTime DateOfBirth
+        public DateTime CostumerDOB
         {
             get
             {
                 //return the private data
-                return mDateofBirth;
+                return mCostumerDOB;
             }
             set
             {
                 //set the private data
-                mDateofBirth = value;
+                mCostumerDOB = value;
             }
         }
 
         //private data member for the AddressNo property
-        private Int32 mAddressNo;
+        private Int32 mCostumerAddress;
         //public property for the address number
-        public int AddressNo
+        public int CostumerAddress
         {
             get
             {
                 //return the private data
-                return mAddressNo;
+                return mCostumerAddress;
             }
             set
             {
                 //set the value of the private data member
-                mAddressNo = value;
+                mCostumerAddress = value;
             }
         }
 
@@ -113,15 +113,17 @@ namespace HardwareClasses
         public bool Find(int AddressNo)
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@AddressNo",AddressNo);
-            DB.Execute("sprac_tblAddress_FilterByAddressNo");
+            DB.AddParameter("@CostumerID",CostumerID);
+            DB.Execute("sprac_tblCostumer_FilterByCostumerID");
             if(DB.Count==1)
             {
-                mAddressNo = Convert.ToInt32(DB.DataTable.Rows[0]["AddressNo"]);
+                mCostumerID = Convert.ToInt32(DB.DataTable.Rows[0]["CostumerID"]);
                 mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
-                mName= Convert.ToString(DB.DataTable.Rows[0]["Active"]);
-                mDateofBirth= Convert.ToDateTime(DB.DataTable.Rows[0]["Active"]);
-                mEmail= Convert.ToString(DB.DataTable.Rows[0]["Active"]);
+                mName= Convert.ToString(DB.DataTable.Rows[0]["Name"]);
+                mCostumerDOB= Convert.ToDateTime(DB.DataTable.Rows[0]["CostumerDateOfBirth"]);
+                mEmail= Convert.ToString(DB.DataTable.Rows[0]["Email"]);
+                mCostumerAddress= Convert.ToString(DB.DataTable.Rows[0]["CostumerAddress"]);
+
 
                 return true;
             }
