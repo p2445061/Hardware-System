@@ -8,12 +8,12 @@ namespace Hardware_Testing
     [TestClass]
     public class tstCostumer
     {
-        string CostumerID = "1";
+        Int32 CostumerID = 1;
         string Name = "James";
         string CostumerAddress = "40 Glenfield Road";
-        string CostumerDOB = "" + DateTime.Now.Date;
+        DateTime CostumerDOB = "" + DateTime.Now.Date;
         string Email = "jamesm@hotmail.com";
-        string Active = "active";
+        Boolean Active = true;
 
 
 
@@ -37,7 +37,7 @@ namespace Hardware_Testing
             //create an instance of the class we want to create
             clsCostumer ACostumer = new clsCostumer();
             //create some test data to assign to the property
-            Int32 TestData = 1;
+           string TestData = "james";
             //assign the data to the property
             ACostumer.Name = TestData;
             //test to see that the two values are the same
@@ -51,7 +51,7 @@ namespace Hardware_Testing
             //create an instance of the class we want to create
             clsCostumer ACostumer = new clsCostumer();
             //create some test data to assign to the property
-            Int32 Active = 1;
+            Boolean TestData = true;
             //assign the data to the property
             ACostumer.Active = TestData;
             //test to see that the two values are the same
@@ -65,7 +65,7 @@ namespace Hardware_Testing
             //create an instance of the class we want to create
             clsCostumer ACostumer = new clsCostumer();
             //create some test data to assign to the property
-            Int32 TestData = 1;
+            string TestData = "$0 Glenfield Road";
             //assign the data to the property
             ACostumer.CostumerAddress = TestData;
             //test to see that the two values are the same
@@ -137,6 +137,7 @@ namespace Hardware_Testing
 
 
 
+
         [TestMethod]
         public void TestCostumerAddressFound()
         {
@@ -147,9 +148,9 @@ namespace Hardware_Testing
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CostumerAddress = 21;
+            Int32 CostumerID = 21;
             //invoke the method
-            Found = ACostumer.Find( CostumerAddress);
+            Found = ACostumer.Find(CostumerID);
             //check the address no
             if (ACostumer.CostumerAddress != 21)
             {
@@ -171,9 +172,9 @@ namespace Hardware_Testing
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 Name = 21;
+            Int32 CostumerID = 21;
             //invoke the method
-            Found = ACostumer.Find(Name);
+            Found = ACostumer.Find(CostumerID);
             //check the property
             if (ACostumer.Name != "Test Name")
             {
@@ -196,9 +197,9 @@ namespace Hardware_Testing
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 DateOfbirth = 21;
+            Int32 CostumerID = 21;
             //invoke the method
-            Found = ACostumer.Find(CostumerDOB);
+            Found = ACostumer.Find(CostumerID);
             //check the property
             if (ACostumer.CostumerDOB!= Convert.ToDateTime("16/09/2015"))
             {
@@ -220,9 +221,9 @@ namespace Hardware_Testing
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 Active = 21;
+            Int32 CostumerID = 21;
             //invoke the method
-            Found = ACostumer.Find(Active);
+            Found = ACostumer.Find(CostumerID);
             //check the property
             if (ACostumer.Active != true)
             {
@@ -242,9 +243,9 @@ namespace Hardware_Testing
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 Email = 21;
+            Int32 CostumerID = 21;
             //invoke the method
-            Found = ACostumer.Find(Email);
+            Found = ACostumer.Find(CostumerID);
             //check the property
             if (ACostumer.Email != true)
             {
@@ -283,7 +284,7 @@ namespace Hardware_Testing
         {
             clsCostumer aCostumer = new clsCostumer();
             string Error = "";
-            Error = aCostumer.Valid(CostumerID, Name, CostumerAddress, CostumerDOB, Email,Active);
+            Error = aCostumer.Valid(CostumerID, Name, CostumerAddress, CostumerDOB, Email, Active);
             Assert.AreEqual(Error, "");
         }
 
@@ -692,6 +693,57 @@ namespace Hardware_Testing
             Error = aCostumer.Valid(CostumerID, Name, CostumerAddress, CostumerDOB, Email, Active);
             Assert.AreNotEqual(Error, "");
         }
+
+        [TestMethod]
+        public string Valid(Int32 CostumerID, string Name, string CostumerAddress, DateTime CostumerDOB, Boolean active)
+        {
+            //create a string variable to store the error
+            String Error = "";
+            //create a temporary variable to store date values
+            DateTime DateTemp;
+            //if the HouseNo is blank
+            if (CostumerAddress.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Address may not be blank : ";
+            }
+            //if the house no is greater than 6 characters
+            if (CostumerID <= 0)
+            {
+                //record the error
+                Error = Error + "The ID should be at least 1 number : ";
+            }
+            //copy the dateAdded value to the DateTemp variable
+
+            if (Name.Length == 0)
+            {
+                //record the error
+                Error = Error + "Name should not be blank : ";
+            }
+            //check to see if the date is greater than today's date
+            if (Email.Length < 5)
+            {
+                //record the error
+                Error = Error + "The email should be at least bigger than 5 characters  : ";
+            }
+
+            if (CostumerDOB.Date < 1 / 01 / 2002)
+            {
+                //record the error
+                Error = Error + "You should be older  : ";
+            }
+
+            if (Active == false)
+            {
+                //record the error
+                Error = Error + "Must be ticked that is active  : ";
+            }
+            //return any error messages
+            return Error;
+        }
+
+
+
 
 
 

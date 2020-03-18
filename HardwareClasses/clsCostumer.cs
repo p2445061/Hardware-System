@@ -45,9 +45,9 @@ namespace HardwareClasses
         }
 
         //private data member for the AddressNo property
-        private Int32 mCostumerAddress;
+        private string mCostumerAddress;
         //public property for the address number
-        public int CostumerAddress
+        public string CostumerAddress
         {
             get
             {
@@ -94,9 +94,9 @@ namespace HardwareClasses
             }
         }
 
-        private string mCostumerID;
+        private Int32 mCostumerID;
         //public data member for Town
-        public string CostumerID
+        public Int32 CostumerID
         {
             get
             {
@@ -110,7 +110,7 @@ namespace HardwareClasses
             }
         }
 
-        public bool Find(int AddressNo)
+        public bool Find(int CostumerID)
         {
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@CostumerID",CostumerID);
