@@ -9,6 +9,18 @@ using System.Web.UI.WebControls;
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (IsPostBack == false)
+            {
+                DisplayStaff();
+            }
+        }
 
+        void DisplayStaff()
+        {
+            HardwareClasses.clsStaffCollection Staff = new HardwareClasses.clsStaffCollection();
+            lstStaff.DataSource = Staff.StaffList;
+            lstStaff.DataValueField = "";
+            lstStaff.DataValueField = "";
+            lstStaff.DataBind();
         }
     }
