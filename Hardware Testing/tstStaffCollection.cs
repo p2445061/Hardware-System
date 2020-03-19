@@ -84,7 +84,7 @@ namespace Hardware_Testing
         {
             clsStaffCollection AllStaff = new clsStaffCollection();
             clsStaff TestStaff = new clsStaff();
-            int PrimaryKey = 1;
+            int PrimaryKey = 0;
             TestItem.ID = 1;
             TestItem.Name = "James";
             TestItem.Address = "40 Glenfield Road";
@@ -97,6 +97,60 @@ namespace Hardware_Testing
             AllStaff.Delete();
             Boolean Found = AllStaff.ThisStaff.Found(PrimaryKey);
             Assert.IsFalse(Found);
+        }
+
+        [TestMethod]
+        public UpdateMethodOK()
+        {
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            clsStaff TestStaff = new clsStaff();
+            int PrimaryKey = 0;
+            TestStaff.ID = 1;
+            TestStaff.Name = "James";
+            TestStaff.Address = "40 Glenfield Road";
+            TestStaff.DOB = DateTime.Now.Date;
+            TestStaff.Manager = false;
+            AllStaff.ThisStaff = TestStaff;
+            PrimaryKey = AllStaff.Add();
+            TestStaff.ID = PrimaryKey;
+            TestStaff.ID = 2;
+            TestStaff.Name = "Troy";
+            TestStaff.Address = "24 Mill Lane";
+            TestStaff.DOB = DateTime.Now.Date;
+            TestStaff.Manager = true;
+            AllStaff.ThisStaff = TestStaff;
+            AllStaff.Update();
+            AllStaff.ThisStaff.Find(PrimaryKey);
+            Assert.AreEqual(AllStaff.ThisStaff, TestStaff);
+        }
+
+        [TestMethod]
+        public ReportByNameMethodOK()
+        {
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            clsStaffCollection FilteredStaff = new clsStaffCollection();
+            FilteredStaff.ReportByName("");
+            Assert.AreEqual(AllStaff.Count,FilteredStaff.Count);
+        }
+
+        [TestMethod]
+        public ReportByNameTestDataFoundOK()
+        {
+            clsStaffCollection FilteredStaff = new clsStaffCollection();
+            Boolean OK = true;
+            FilteredStaff.ReportByName("James");
+            if (FilteredStaff.Count == 1)
+            {
+                if (FilteredStaff.StaffList[0].ID != 1)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
         }
 
     }

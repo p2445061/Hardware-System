@@ -61,13 +61,31 @@ namespace HardwareClasses
             DB.Execute("sproc_tblStaff_Delete");
         }
 
-        public clsStaffCollection()
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@ID",mThisStaff.ID);
+            DB.AddParameter("@Name",mThisStaff.Name);
+            DB.AddParameter("@Address",mThisStaff.Address);
+            DB.AddParameter("@DOB",mThisStaff.DOB);
+            DB.AddParameter("@Manager",mThisStaff.Manager);
+            DB.Execute("sproc_tblStaff_Update");
+        }
+
+        public void ReportByName(String name)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@Name",name);
+            DB.Execute("sproc_tblStaff_FilterByName");
+            PopulateArray(DB);
+        }
+
+        void PopulateArray(clsDataConnection DB)
         {
             int Index = 0;
             int RecordCount = 0;
-            clsDataConnection DB = new clsDataConnection();
-            DB.Execute("sproc_tblStaff+SelectAll");
             RecordCount = DB.Count;
+            mStaffList = new List<clsStaff>();
             while (Index < RecordCount)
             {
                 clsStaff staff = new clsStaff();
@@ -79,6 +97,13 @@ namespace HardwareClasses
                 mStaffList.Add(staff);
                 Index++;
             }
+        }
+
+        public clsStaffCollection()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.Execute("sproc_tblStaff+SelectAll");
+            PopulateArray(DB);
         }
     }
 }
