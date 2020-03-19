@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-//using System.Linq;
+using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -9,11 +9,40 @@ using HardwareClasses;
 
     public partial class staff : System.Web.UI.Page
     {
+
+        int ID;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-        clsStaff staff = new clsStaff();
-        staff = (clsStaff)Session["staff"];
-        Response.Write(staff.Name);
+        ID = Convert.ToInt32(Session["ID"]);
+        if (IsPostBack == false)
+        {
+            DisplayName();
+            if (ID != -1)
+            {
+                DisplayStaff();
+            }
+        }
+        }
+
+        void DisplayName()
+        {
+        clsStaffCollection StaffList = new clsStaffCollection();
+        lstStaffList.DataSource = StaffList.StaffList;
+        lstStaffList.DataValueField = "ID";
+        lstStaffList.DataValueField = "Name";
+        lstStaffList.DataBind();
+        }
+
+        void DisplayStaff()
+        {
+            clsStaffCollection StaffList = new clsStaffCollection();
+            StaffList.ThisStaff.Find(ID);
+            txtID.Text = StaffList.ThisStaff.ID.ToString();
+            txtName.Text = StaffList.ThisStaff.Name.ToString();
+            txtAddress.Text = StaffList.ThisStaff.Address.ToString();
+            txtDOB.Text = StaffList.ThisStaff.DOB.ToString();
+            StaffManager.Checked = StaffList.ThisStaff.Manager;
         }
 
         protected void btnOK_Click(object sender, EventArgs e)
@@ -29,15 +58,24 @@ using HardwareClasses;
         Error = staff.Valid(ID, Name, Address, DOB, Manager);
         if (Error == "")
         {
-            staff.ID = Convert.ToInt32(txtID.Text);
-            staff.Name = txtName.Text;
-            staff.Address = txtAddress.Text;
-            staff.DOB = Convert.ToDateTime(txtDOB.Text);
+            staff.ID = Convert.ToInt32(ID);
+            staff.Name = Name;
+            staff.Address = Address;
+            staff.DOB = Convert.ToDateTime(DOB);
             staff.Manager = StaffManager.Checked;
             clsStaffCollecton StaffList = new clsStaffCollecton();
-            StaffList.ThisStaff = staff;
-            StaffList.Add();
-            Response.Redirect("StaffViewer.aspx");
+            if (Convert.ToInt32(ID) == -1)
+            {
+                StaffList.ThisStaff = staff;
+                StaffList.Add();
+            }
+            else
+            {
+                StaffList.ThisStaff.Find(Convert.ToInt32(ID));
+                StaffList.ThisStaff = staff;
+                StaffList.Update();
+            }
+            Response.Redirect("StaffList.aspx");
         }
         else
         {
@@ -59,5 +97,10 @@ using HardwareClasses;
             txtDOB.Text = "" + staff.DOB;
             StaffManager.Checked = staff.Manager;
         }
+    }
+
+    protected void btnCan_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("StaffList.aspx");
     }
 }
