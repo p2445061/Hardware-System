@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AnOrderLine.aspx.cs" Inherits="HardwareFrontOffice.AnOrderLine" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="AnOrderLine.aspx.cs" Inherits="AnOrderLine" %>
 
 <!DOCTYPE html>
 

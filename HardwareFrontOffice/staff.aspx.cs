@@ -14,24 +14,14 @@ using HardwareClasses;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-        ID = Convert.ToInt32(Session["ID"]);
-        if (IsPostBack == false)
-        {
-            DisplayName();
-            if (ID != -1)
+            ID = Convert.ToInt32(Session["ID"]);
+            if (IsPostBack == false)
             {
-                DisplayStaff();
+                if (ID != -1)
+                {
+                   DisplayStaff();
+                }
             }
-        }
-        }
-
-        void DisplayName()
-        {
-        clsStaffCollection StaffList = new clsStaffCollection();
-        lstStaffList.DataSource = StaffList.StaffList;
-        lstStaffList.DataValueField = "ID";
-        lstStaffList.DataValueField = "Name";
-        lstStaffList.DataBind();
         }
 
         void DisplayStaff()
@@ -63,7 +53,7 @@ using HardwareClasses;
             staff.Address = Address;
             staff.DOB = Convert.ToDateTime(DOB);
             staff.Manager = StaffManager.Checked;
-            clsStaffCollecton StaffList = new clsStaffCollecton();
+            clsStaffCollection StaffList = new clsStaffCollection();
             if (Convert.ToInt32(ID) == -1)
             {
                 StaffList.ThisStaff = staff;
