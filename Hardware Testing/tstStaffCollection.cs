@@ -9,14 +9,14 @@ namespace Hardware_Testing
     public class tstStaffCollection
     {
         [TestMethod]
-        public InstanceOK()
+        public void InstanceOK()
         {
             clsStaffCollection AllStaff = new clsStaffCollection();
             Assert.IsNotNull(AllStaff);
         }
 
         [TestMethod]
-        public StaffListOK()
+        public void StaffListOK()
         {
             clsStaffCollection AllStaff = new clsStaffCollection();
             List<clsStaff> TestList = new List<clsStaff>();
@@ -32,21 +32,21 @@ namespace Hardware_Testing
         }
 
         [TestMethod]
-        public ThisStaffOK()
+        public void ThisStaffOK()
         {
             clsStaffCollection AllStaff = new clsStaffCollection();
             clsStaff TestStaff = new clsStaff();
-            TestItem.ID = 1;
-            TestItem.Name = "James";
-            TestItem.Address = "40 Glenfield Road";
-            TestItem.DOB = DateTime.Now.Date;
-            TestItem.Manager = false;
+            TestStaff.ID = 1;
+            TestStaff.Name = "James";
+            TestStaff.Address = "40 Glenfield Road";
+            TestStaff.DOB = DateTime.Now.Date;
+            TestStaff.Manager = false;
             AllStaff.ThisStaff = TestStaff;
             Assert.AreEqual(AllStaff.ThisStaff, TestStaff);
         }
 
         [TestMethod]
-        public ListAndCountOK()
+        public void ListAndCountOK()
         {
             clsStaffCollection AllStaff = new clsStaffCollection();
             List<clsStaff> TestList = new List<clsStaff>();
@@ -62,45 +62,45 @@ namespace Hardware_Testing
         }
 
         [TestMethod]
-        public AddMethodOK()
+        public void AddMethodOK()
         {
             clsStaffCollection AllStaff = new clsStaffCollection();
             clsStaff TestStaff = new clsStaff();
             int PrimaryKey = 1;
-            TestItem.ID = 1;
-            TestItem.Name = "James";
-            TestItem.Address = "40 Glenfield Road";
-            TestItem.DOB = DateTime.Now.Date;
-            TestItem.Manager = false;
+            TestStaff.ID = 1;
+            TestStaff.Name = "James";
+            TestStaff.Address = "40 Glenfield Road";
+            TestStaff.DOB = DateTime.Now.Date;
+            TestStaff.Manager = false;
             AllStaff.ThisStaff = TestStaff;
             PrimaryKey = AllStaff.Add();
-            TestItem.ID = PrimaryKey;
+            TestStaff.ID = PrimaryKey;
             AllStaff.ThisStaff.Find(PrimaryKey);
             Assert.AreEqual(AllStaff.ThisStaff, TestStaff);
         }
 
         [TestMethod]
-        public DeleteMethodOK()
+        public void DeleteMethodOK()
         {
             clsStaffCollection AllStaff = new clsStaffCollection();
             clsStaff TestStaff = new clsStaff();
             int PrimaryKey = 0;
-            TestItem.ID = 1;
-            TestItem.Name = "James";
-            TestItem.Address = "40 Glenfield Road";
-            TestItem.DOB = DateTime.Now.Date;
-            TestItem.Manager = false;
+            TestStaff.ID = 1;
+            TestStaff.Name = "James";
+            TestStaff.Address = "40 Glenfield Road";
+            TestStaff.DOB = DateTime.Now.Date;
+            TestStaff.Manager = false;
             AllStaff.ThisStaff = TestStaff;
             PrimaryKey = AllStaff.Add();
-            TestItem.ID = PrimaryKey;
+            TestStaff.ID = PrimaryKey;
             AllStaff.ThisStaff.Find(PrimaryKey);
             AllStaff.Delete();
-            Boolean Found = AllStaff.ThisStaff.Found(PrimaryKey);
+            Boolean Found = AllStaff.ThisStaff.Find(PrimaryKey);
             Assert.IsFalse(Found);
         }
 
         [TestMethod]
-        public UpdateMethodOK()
+        public void UpdateMethodOK()
         {
             clsStaffCollection AllStaff = new clsStaffCollection();
             clsStaff TestStaff = new clsStaff();
@@ -125,7 +125,7 @@ namespace Hardware_Testing
         }
 
         [TestMethod]
-        public ReportByNameMethodOK()
+        public void ReportByNameMethodOK()
         {
             clsStaffCollection AllStaff = new clsStaffCollection();
             clsStaffCollection FilteredStaff = new clsStaffCollection();
@@ -134,7 +134,7 @@ namespace Hardware_Testing
         }
 
         [TestMethod]
-        public ReportByNameTestDataFoundOK()
+        public void ReportByNameTestDataFoundOK()
         {
             clsStaffCollection FilteredStaff = new clsStaffCollection();
             Boolean OK = true;

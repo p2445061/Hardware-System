@@ -350,7 +350,7 @@ namespace Hardware_Testing
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddYears(-100);
-            DOB = TestDate.ToString;
+            DOB = TestDate.ToString();
             Error = staff.Valid(ID, Name, Address, DOB, Manager);
             Assert.AreEqual(Error, "");
         }
@@ -363,7 +363,7 @@ namespace Hardware_Testing
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddDays(-1);
-            DOB = TestDate.ToString;
+            DOB = TestDate.ToString();
             Error = staff.Valid(ID, Name, Address, DOB, Manager);
             Assert.AreEqual(Error, "");
         }
@@ -375,7 +375,7 @@ namespace Hardware_Testing
             string Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
-            DOB = TestDate.ToString;
+            DOB = TestDate.ToString();
             Error = staff.Valid(ID, Name, Address, DOB, Manager);
             Assert.AreEqual(Error, "");
         }
@@ -388,7 +388,7 @@ namespace Hardware_Testing
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddDays(1);
-            DOB = TestDate.ToString;
+            DOB = TestDate.ToString();
             Error = staff.Valid(ID, Name, Address, DOB, Manager);
             Assert.AreNotEqual(Error, "");
         }
@@ -401,7 +401,7 @@ namespace Hardware_Testing
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddYears(100);
-            DOB = TestDate.ToString;
+            DOB = TestDate.ToString();
             Error = staff.Valid(ID, Name, Address, DOB, Manager);
             Assert.AreNotEqual(Error, "");
         }
