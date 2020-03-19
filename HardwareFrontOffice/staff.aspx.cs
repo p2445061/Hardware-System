@@ -19,7 +19,7 @@ using HardwareClasses;
             {
                 if (ID != -1)
                 {
-                   DisplayStaff();
+                   //DisplayStaff();
                 }
             }
         }

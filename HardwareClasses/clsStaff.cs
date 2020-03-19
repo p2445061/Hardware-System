@@ -68,19 +68,18 @@ namespace HardwareClasses
             }
         }
 
-        public bool Find(int id)
+        public bool Find(int ID)
         {
             clsDataConnection DB = new clsDataConnection();
-            mID = 1;
             DB.AddParameter("@ID", ID);
             DB.Execute("sproc_tblStaff_FilterByID");
             if (DB.Count == 1)
             {
-                mID = Convert.ToInt32(DB.DataTable.Rows[0]["ID"]);
-                mName = Convert.ToString(DB.DataTable.Rows[0]["Name"]);
-                mDOB = Convert.ToDateTime(DB.DataTable.Rows[0]["DOB"]);
-                mManager = Convert.ToBoolean(DB.DataTable.Rows[0]["Manager"]);
-                mAddress = Convert.ToString(DB.DataTable.Rows[0]["Address"]);
+                mID = Convert.ToInt32(DB.DataTable.Rows[0]["StaffId"]);
+                mName = Convert.ToString(DB.DataTable.Rows[0]["StaffName"]);
+                mAddress = Convert.ToString(DB.DataTable.Rows[0]["StaffAddress"]);
+                mDOB = Convert.ToDateTime(DB.DataTable.Rows[0]["StaffDOB"]);
+                mManager = Convert.ToBoolean(DB.DataTable.Rows[0]["StaffManager"]);
                 return true;
             }
             else

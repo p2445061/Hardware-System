@@ -86,7 +86,7 @@ namespace Hardware_Testing
             int id = 1;
             staff.ID = id;
             Found = staff.Find(id);
-            if (staff.Name != "james")
+            if (staff.Name != "James Smith")
             {
                 OK = false;
             }
@@ -118,7 +118,7 @@ namespace Hardware_Testing
             int id = 1;
             staff.ID = id;
             Found = staff.Find(id);
-            if (staff.Address != "40 glen")
+            if (staff.Address != "40 Glenfield Road")
             {
                 OK = false;
             }
@@ -150,7 +150,7 @@ namespace Hardware_Testing
             int id = 1;
             staff.ID = id;
             Found = staff.Find(id);
-            if (staff.Manager != true)
+            if (staff.Manager != false)
             {
                 OK = false;
             }
@@ -204,7 +204,7 @@ namespace Hardware_Testing
             clsStaff staff = new clsStaff();
             string Error = "";
             Name = "";
-            Name = Name.PadRight(49,'a');
+            Name = Name.PadRight(49, 'a');
             Error = staff.Valid(ID, Name, Address, DOB, Manager);
             Assert.AreEqual(Error, "");
         }

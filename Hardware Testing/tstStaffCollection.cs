@@ -130,7 +130,7 @@ namespace Hardware_Testing
             clsStaffCollection AllStaff = new clsStaffCollection();
             clsStaffCollection FilteredStaff = new clsStaffCollection();
             FilteredStaff.ReportByName("");
-            Assert.AreEqual(AllStaff.Count,FilteredStaff.Count);
+            Assert.AreEqual(AllStaff.Count, FilteredStaff.Count);
         }
 
         [TestMethod]
@@ -138,7 +138,7 @@ namespace Hardware_Testing
         {
             clsStaffCollection FilteredStaff = new clsStaffCollection();
             Boolean OK = true;
-            FilteredStaff.ReportByName("James");
+            FilteredStaff.ReportByName("James Smith");
             if (FilteredStaff.Count == 1)
             {
                 if (FilteredStaff.StaffList[0].ID != 1)
