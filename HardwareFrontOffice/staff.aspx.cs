@@ -34,7 +34,9 @@ using HardwareClasses;
             staff.Address = txtAddress.Text;
             staff.DOB = Convert.ToDateTime(txtDOB.Text);
             staff.Manager = StaffManager.Checked;
-            Session["staff"] = staff;
+            clsStaffCollecton StaffList = new clsStaffCollecton();
+            StaffList.ThisStaff = staff;
+            StaffList.Add();
             Response.Redirect("StaffViewer.aspx");
         }
         else

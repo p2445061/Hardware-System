@@ -61,5 +61,43 @@ namespace Hardware_Testing
             Assert.AreEqual(AllStaff.Count, TestList.Count);
         }
 
+        [TestMethod]
+        public AddMethodOK()
+        {
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            clsStaff TestStaff = new clsStaff();
+            int PrimaryKey = 1;
+            TestItem.ID = 1;
+            TestItem.Name = "James";
+            TestItem.Address = "40 Glenfield Road";
+            TestItem.DOB = DateTime.Now.Date;
+            TestItem.Manager = false;
+            AllStaff.ThisStaff = TestStaff;
+            PrimaryKey = AllStaff.Add();
+            TestItem.ID = PrimaryKey;
+            AllStaff.ThisStaff.Find(PrimaryKey);
+            Assert.AreEqual(AllStaff.ThisStaff, TestStaff);
+        }
+
+        [TestMethod]
+        public DeleteMethodOK()
+        {
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            clsStaff TestStaff = new clsStaff();
+            int PrimaryKey = 1;
+            TestItem.ID = 1;
+            TestItem.Name = "James";
+            TestItem.Address = "40 Glenfield Road";
+            TestItem.DOB = DateTime.Now.Date;
+            TestItem.Manager = false;
+            AllStaff.ThisStaff = TestStaff;
+            PrimaryKey = AllStaff.Add();
+            TestItem.ID = PrimaryKey;
+            AllStaff.ThisStaff.Find(PrimaryKey);
+            AllStaff.Delete();
+            Boolean Found = AllStaff.ThisStaff.Found(PrimaryKey);
+            Assert.IsFalse(Found);
+        }
+
     }
 }
