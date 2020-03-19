@@ -6,6 +6,7 @@ namespace HardwareClasses
     public class clsStaffCollection
     {
         List<clsStaff> mStaffList = new List<clsStaff>();
+        clsStaff mThisStaff = new clsStaff();
 
         public List<clsStaff> StaffList
         {
@@ -29,6 +30,35 @@ namespace HardwareClasses
             {
                 //todo ig
             }
+        }
+
+        public clsStaff ThisStaff
+        {
+            get
+            {
+                return mThisStaff;
+            }
+            set
+            {
+                mThisStaff = value;
+            }
+        }
+
+        public int Add()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@Name",mThisStaff.Name);
+            DB.AddParameter("@Address",mThisStaff.Address);
+            DB.AddParameter("@DOB",mThisStaff.DOB);
+            DB.AddParameter("@Manager",mThisStaff.Manager);
+            return DB.Execute("sproc_tblStaff_Insert");
+        }
+
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@ID",mThisStaff.ID);
+            DB.Execute("sproc_tblStaff_Delete");
         }
 
         public clsStaffCollection()
