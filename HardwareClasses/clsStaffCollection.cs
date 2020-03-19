@@ -47,35 +47,35 @@ namespace HardwareClasses
         public int Add()
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@Name",mThisStaff.Name);
-            DB.AddParameter("@Address",mThisStaff.Address);
-            DB.AddParameter("@DOB",mThisStaff.DOB);
-            DB.AddParameter("@Manager",mThisStaff.Manager);
+            DB.AddParameter("@Name", mThisStaff.Name);
+            DB.AddParameter("@Address", mThisStaff.Address);
+            DB.AddParameter("@DOB", mThisStaff.DOB);
+            DB.AddParameter("@Manager", mThisStaff.Manager);
             return DB.Execute("sproc_tblStaff_Insert");
         }
 
         public void Delete()
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@ID",mThisStaff.ID);
+            DB.AddParameter("@ID", mThisStaff.ID);
             DB.Execute("sproc_tblStaff_Delete");
         }
 
         public void Update()
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@ID",mThisStaff.ID);
-            DB.AddParameter("@Name",mThisStaff.Name);
-            DB.AddParameter("@Address",mThisStaff.Address);
-            DB.AddParameter("@DOB",mThisStaff.DOB);
-            DB.AddParameter("@Manager",mThisStaff.Manager);
+            DB.AddParameter("@ID", mThisStaff.ID);
+            DB.AddParameter("@Name", mThisStaff.Name);
+            DB.AddParameter("@Address", mThisStaff.Address);
+            DB.AddParameter("@DOB", mThisStaff.DOB);
+            DB.AddParameter("@Manager", mThisStaff.Manager);
             DB.Execute("sproc_tblStaff_Update");
         }
 
         public void ReportByName(String name)
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@Name",name);
+            DB.AddParameter("@Name", name);
             DB.Execute("sproc_tblStaff_FilterByName");
             PopulateArray(DB);
         }
@@ -89,11 +89,11 @@ namespace HardwareClasses
             while (Index < RecordCount)
             {
                 clsStaff staff = new clsStaff();
-                staff.ID = Convert.ToInt32(DB.DataTable.Rows[Index]["ID"]);
-                staff.Name = Convert.ToString(DB.DataTable.Rows[Index]["Name"]);
-                staff.Address = Convert.ToString(DB.DataTable.Rows[Index]["Address"]);
-                staff.DOB = Convert.ToDateTime(DB.DataTable.Rows[Index]["DOB"]);
-                staff.Manager = Convert.ToBoolean(DB.DataTable.Rows[Index]["Manager"]);
+                staff.ID = Convert.ToInt32(DB.DataTable.Rows[Index]["StaffId"]);
+                staff.Name = Convert.ToString(DB.DataTable.Rows[Index]["StaffName"]);
+                staff.Address = Convert.ToString(DB.DataTable.Rows[Index]["StaffAddress"]);
+                staff.DOB = Convert.ToDateTime(DB.DataTable.Rows[Index]["StaffDOB"]);
+                staff.Manager = Convert.ToBoolean(DB.DataTable.Rows[Index]["StaffManager"]);
                 mStaffList.Add(staff);
                 Index++;
             }
@@ -102,7 +102,7 @@ namespace HardwareClasses
         public clsStaffCollection()
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.Execute("sproc_tblStaff+SelectAll");
+            DB.Execute("sproc_tblStaff_SelectAll");
             PopulateArray(DB);
         }
     }
