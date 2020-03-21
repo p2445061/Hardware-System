@@ -9,9 +9,6 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            PartNo
-            <asp:TextBox ID="txtPartNo" runat="server" OnTextChanged="btnOK_Click"></asp:TextBox>
-            <br />
             Part Description 
             <asp:TextBox ID="txtPartDescription" runat="server" OnTextChanged="btnOK_Click"></asp:TextBox>
             <br />

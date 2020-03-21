@@ -78,6 +78,97 @@ namespace Hardware_Testing
             Assert.AreEqual(AllStock.ThisStock, TestItem);
 
         }
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            clsStockCollection allStock = new clsStockCollection();
+            clsStock TestStock = new clsStock();
+            Int32 PrimaryKey = 0;
+           
+            TestStock.PartDescription = "Monitor";
+            TestStock.Quantity = 2;
+            TestStock.Price = 2;
+            TestStock.DateAdded = DateTime.Now.Date;
+            TestStock.Available = true;
+            AllStock.ThisStock = TestStock;
+            PrimaryKey = allStock.Add();
+            TestStock.PartNo = PrimaryKey;
+            allStock.ThisStaff.Find(PrimaryKey);
+            allStock.Delete();
+            Boolean Found = allStock.ThisStock.Find(PrimaryKey);
+            Assert.IsFalse(Found);
+        }
+
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            clsStockCollection allStock = new clsStockCollection();
+            clsStock TestStock = new clsStock();
+            Int32 PrimaryKey = 0;
+            TestStock.PartNo = 1;
+            TestStock.PartDescription = "Monitor";
+            TestStock.Quantity = 2;
+            TestStock.Price = 2;
+            TestStock.DateAdded = DateTime.Now.Date;
+            TestStock.Available = true;
+            AllStock.ThisStock = TestStock;
+            PrimaryKey = allStock.Add();
+            TestStock.PartNo = PrimaryKey;
+
+           
+            TestStock.PartDescription = "Mouse";
+            TestStock.Quantity = 1;
+            TestStock.Price = 5;
+            TestStock.DateAdded = DateTime.Now.Date;
+            TestStock.Available = false;
+
+            allStock.ThisStock = TestStock;
+
+            allStock.Update();
+
+            allStock.ThisStock.Find(PrimaryKey);
+
+            Assert.AreEqual(allStock.ThisStock, TestStock);
+
+        }
+        [TestMethod]
+        public void ReoprtByPartDescription()
+        {
+            clsStockCollection allStock = new clsStockCollection();
+            clsStockCollection FilteredStock = new clsStockCollection();
+
+            FilteredStock.ReoprtByPartDescription("");
+
+            Assert.AreEqual(allStock.Count, FilteredStock.Count);
+        }
+        [TestMethod]
+        public void ReoprtByPartDescriptionTestDataFound()
+        {
+            clsStockCollection FilteredStock = new clsStockCollection();
+            Boolean OK = true;
+
+            FilteredStock.ReoprtByPartDescription("xxxxxxxxxxxxxxx");
+            if (FilteredStock.Count == 2)
+            {
+                if (FilteredStock.StocList[0].PartNo != 36)
+                {
+                    OK = false;
+                }
+                if (FilteredStock.StocList[1].PartNo != 37)
+                {
+                    OK = false;
+                }
+                else
+                {
+                    OK = false;
+                }
+                Assert.IsTrue(OK);
+
+            }
+        }
+
+
+
 
 
 
