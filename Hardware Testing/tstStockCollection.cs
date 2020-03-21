@@ -11,7 +11,7 @@ namespace Hardware_Testing
         public clsStock ThisStock { get; private set; }
 
         [TestMethod]
-        public void TestMethod1()
+        public void InstanceOK()
         {
             clsStockCollection AllStock = new clsStockCollection();
             Assert.IsNotNull(AllStock);
@@ -58,8 +58,29 @@ namespace Hardware_Testing
             Assert.AreEqual(AllStock.ThisStock, ThisStock);
 
         }
-       
-  
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            clsStockCollection AllStock = new clsStockCollection();
+
+            clsStock TestItem = new clsStock();
+            Int32 PrimaryKey = 0;
+            TestItem.Available = true;
+            TestItem.PartNo = 1;
+            TestItem.DateAdded = DateTime.Now.Date;
+            TestItem.Price = 1;
+            TestItem.Quantity = 1;
+            TestItem.PartDescription = "";
+
+            AllStock.ThisStock = TestItem;
+            PrimaryKey = AllStock.Add();
+            AllStock.ThisStock.Find(PrimaryKey);
+            Assert.AreEqual(AllStock.ThisStock, TestItem);
+
+        }
+
+
+
 
 
 
