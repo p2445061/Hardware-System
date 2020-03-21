@@ -47,11 +47,61 @@ namespace HardwareClasses
 
         public clsStockCollection()
         {
-            Int32 Index = 0;
-            Int32 RecordCount = 0;
             clsDataConnection DB = new clsDataConnection();
             DB.Execute("sproc_tblStock_SelectAll");
+            PopulateArray(DB);
+
+        }
+        public int Add()
+       {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@PartDescription", mThisStock.PartDescription);
+            DB.AddParameter("@DateAdded", mThisStock.@DateAdded);
+            DB.AddParameter("@Quantity", mThisStock.@Quantity);
+            DB.AddParameter("@Price", mThisStock.@Price);
+            DB.AddParameter("@Available", mThisStock.@Available);
+
+            return DB.Execute("sproc_tblStock_Insert");
+
+            
+        }
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@PartNo", mThisStock.PartNo);
+            DB.Execute("sproc_tblStock_Delete");
+        }
+
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+
+            DB.AddParameter("@PartNo", mThisStock.PartNo);
+            DB.AddParameter("@PartDescription", mThisStock.PartDescription);
+            DB.AddParameter("@DateAdded", mThisStock.@DateAdded);
+            DB.AddParameter("@Quantity", mThisStock.@Quantity);
+            DB.AddParameter("@Price", mThisStock.@Price);
+            DB.AddParameter("@Available", mThisStock.@Available);
+
+            DB.Execute("sproc_tblStock_Update");
+
+        }
+
+        public void ReoprtByPartDescription(string PartDescription)
+        {
+            clsDataConnection DB = new clsDataConnection();
+
+            DB.AddParameter("@PartDescription", PartDescription);
+            DB.Execute("sproc_tblStock_FilterByPartDescription");
+        }
+
+        void PopulateArray(clsDataConnection DB)
+        {
+            Int32 Index = 0;
+            Int32 RecordCount;
             RecordCount = DB.Count;
+            mStockList = new List<clsStock>();
+
             while (Index < RecordCount)
             {
                 clsStock stock = new clsStock();
@@ -67,16 +117,7 @@ namespace HardwareClasses
 
                 Index++;
             }
-
-                                   
         }
-        //public int Add()
-      //  {
-          //  clsStockCollection DB = new clsStockCollection();
 
-       //     DB.AddParameter("@PartNo", mThisStock.PartNo);
-       // }
-
-        
     }
 }

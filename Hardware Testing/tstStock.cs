@@ -10,7 +10,7 @@ namespace Hardware_Testing
         string partNo = "1";
         string quantity = "2";
         string partDescription = "MONITOR";
-        string supplierId = "2525";
+        
         string price = "2";
         string dateAdded = DateTime.Now.Date.ToString();
 
@@ -50,18 +50,7 @@ namespace Hardware_Testing
             Assert.AreEqual(stock.PartNo, TestData);
         }
 
-        [TestMethod]
-        public void SupplierIdPropertyOK()
-        {
-            //create an instance of the class we want to create
-            clsStock stock = new clsStock();
-            //create some test data to assign to the property
-            int TestData = 1;
-            //assign the data to the property
-            stock.SupplierId = TestData;
-            //test to see that the two values are the same
-            Assert.AreEqual(stock.SupplierId, TestData);
-        }
+       
         [TestMethod]
         public void PartDescriptionPropertyOK()
         {
@@ -110,6 +99,7 @@ namespace Hardware_Testing
             Boolean Found = false;
             //assign the data to the property
             Int32 PartNo = 21;
+            Found = stock.Find(PartNo);
             //test to see that the two values are the same
             Assert.IsTrue(Found);
         }
@@ -174,26 +164,7 @@ namespace Hardware_Testing
 
         }
 
-        [TestMethod]
-        public void TestSupplierIdFound()
-        {
-            //create an instance of the class we want to create
-            clsStock stock = new clsStock();
-            //Boolean variable to store the result of the validation
-            Boolean Found = false;
-            //boolean variable to record if data is OK (assume it is)
-            Boolean OK = true;
-            //assign the data to the property
-            Int32 PartNo = 21;
-            Found = stock.Find(PartNo);
-            if (stock.SupplierId != 2525)
-            {
-                OK = false;
-            }
-            Assert.IsTrue(OK);
-
-
-        }
+        
 
         [TestMethod]
         public void TestPartDescriptionFound()

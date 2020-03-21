@@ -45,23 +45,17 @@ namespace HardwareClasses
             }
         }
 
+        public string Valid(string quantity, string partDescription, string price, string dateAdded)
+        {
+            throw new NotImplementedException();
+        }
+
         public string Valid(string partNo, string quantity, string partDescription, string price, string dateAdded)
         {
             throw new NotImplementedException();
         }
 
-        private Int32 msupplierId;
-        public int SupplierId
-        {
-            get
-            {
-                return msupplierId;
-            }
-            set
-            {
-                msupplierId = value;
-            }
-        }
+       
         private string mPartDescription;
         public string PartDescription
         {
@@ -110,7 +104,7 @@ namespace HardwareClasses
                 mPartNo = Convert.ToInt32(DB.DataTable.Rows[0]["PartNo"]);
                 mQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["Quantity"]);
                 mPartDescription = Convert.ToString(DB.DataTable.Rows[0]["PartDescription"]);
-                msupplierId = Convert.ToInt32(DB.DataTable.Rows[0]["2525"]);
+               
                 mAvailable = Convert.ToBoolean(DB.DataTable.Rows[0]["Available"]);
                 mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["03/03/2020"]);
                 mPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["Price"]);

@@ -13,9 +13,6 @@
             <asp:TextBox ID="txtPartNo" runat="server" OnTextChanged="btnOK_Click"></asp:TextBox>
             <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" />
             <br />
-            SupplierId
-            <asp:TextBox ID="txtSupplier" runat="server" OnTextChanged="btnOK_Click"></asp:TextBox>
-            <br />
             Part Description 
             <asp:TextBox ID="txtPartDescription" runat="server" OnTextChanged="btnOK_Click"></asp:TextBox>
             <br />
@@ -28,9 +25,7 @@
             Quantity
             <asp:TextBox ID="txtQuantity" runat="server" OnTextChanged="btnOK_Click"></asp:TextBox>
             <br />
-&nbsp;Available
-            <asp:CheckBox ID="btnYes" runat="server" OnCheckedChanged="CheckBox1_CheckedChanged" Text="Yes" />
-            <asp:CheckBox ID="btnNo" runat="server" OnCheckedChanged="btnNo_CheckedChanged" Text="No" />
+&nbsp;<asp:CheckBox ID="ChkAvailable" runat="server" Text="Available" />
             <br />
             <asp:Label ID="lblError" runat="server" Text="[lblError]"></asp:Label>
             <br />
