@@ -90,10 +90,10 @@ namespace Hardware_Testing
             TestStock.Price = 2;
             TestStock.DateAdded = DateTime.Now.Date;
             TestStock.Available = true;
-            AllStock.ThisStock = TestStock;
+            allStock.ThisStock = TestStock;
             PrimaryKey = allStock.Add();
             TestStock.PartNo = PrimaryKey;
-            allStock.ThisStaff.Find(PrimaryKey);
+            allStock.ThisStock.Find(PrimaryKey);
             allStock.Delete();
             Boolean Found = allStock.ThisStock.Find(PrimaryKey);
             Assert.IsFalse(Found);
@@ -111,7 +111,7 @@ namespace Hardware_Testing
             TestStock.Price = 2;
             TestStock.DateAdded = DateTime.Now.Date;
             TestStock.Available = true;
-            AllStock.ThisStock = TestStock;
+            allStock.ThisStock = TestStock;
             PrimaryKey = allStock.Add();
             TestStock.PartNo = PrimaryKey;
 
@@ -150,11 +150,11 @@ namespace Hardware_Testing
             FilteredStock.ReoprtByPartDescription("xxxxxxxxxxxxxxx");
             if (FilteredStock.Count == 2)
             {
-                if (FilteredStock.StocList[0].PartNo != 36)
+                if (FilteredStock.StockList[0].PartNo != 36)
                 {
                     OK = false;
                 }
-                if (FilteredStock.StocList[1].PartNo != 37)
+                if (FilteredStock.StockList[1].PartNo != 37)
                 {
                     OK = false;
                 }
