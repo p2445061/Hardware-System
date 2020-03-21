@@ -7,6 +7,7 @@ namespace HardwareClasses
     public class clsStockCollection
     {
         public List<clsStock> mStockList = new List<clsStock>();
+        clsStock mThisStock = new clsStock();
         public List<clsStock> StockList
         {
             get
@@ -29,7 +30,20 @@ namespace HardwareClasses
 
             }
         }
-        public clsStock ThisStock { get; set; }
+        public clsStock ThisStock
+        {
+
+            get
+            {
+                return mThisStock;
+            }
+                
+                
+            set
+            {
+                mThisStock = value;
+            }
+                }
 
         public clsStockCollection()
         {
@@ -54,8 +68,15 @@ namespace HardwareClasses
                 Index++;
             }
 
-
-                       
+                                   
         }
+        //public int Add()
+      //  {
+          //  clsStockCollection DB = new clsStockCollection();
+
+       //     DB.AddParameter("@PartNo", mThisStock.PartNo);
+       // }
+
+        
     }
 }
