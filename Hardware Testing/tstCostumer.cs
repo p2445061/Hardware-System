@@ -694,54 +694,21 @@ namespace Hardware_Testing
             Assert.AreNotEqual(Error, "");
         }
 
+        
         [TestMethod]
-        public string Valid(Int32 CostumerID, string Name, string CostumerAddress, DateTime CostumerDOB, Boolean active)
+
+        public void CostumerIDInvalidData()
         {
-            //create a string variable to store the error
+            clsCostumer ACostumer = new clsCostumer();
+
             String Error = "";
-            //create a temporary variable to store date values
-            DateTime DateTemp;
-            //if the HouseNo is blank
-            if (CostumerAddress.Length == 0)
-            {
-                //record the error
-                Error = Error + "The Address may not be blank : ";
-            }
-            //if the house no is greater than 6 characters
-            if (CostumerID <= 0)
-            {
-                //record the error
-                Error = Error + "The ID should be at least 1 number : ";
-            }
-            //copy the dateAdded value to the DateTemp variable
 
-            if (Name.Length == 0)
-            {
-                //record the error
-                Error = Error + "Name should not be blank : ";
-            }
-            //check to see if the date is greater than today's date
-            if (Email.Length < 5)
-            {
-                //record the error
-                Error = Error + "The email should be at least bigger than 5 characters  : ";
-            }
+            Int32 CostumerID = "this is not a valid ID";
 
-            if (CostumerDOB.Date < 1 / 01 / 2002)
-            {
-                //record the error
-                Error = Error + "You should be older  : ";
-            }
+            Error = aCostumer.Valid(CostumerID, Name, CostumerAddress, CostumerDOB, Email, Active);
 
-            if (Active == false)
-            {
-                //record the error
-                Error = Error + "Must be ticked that is active  : ";
-            }
-            //return any error messages
-            return Error;
+            Assert.ArenotEqual(Error, "");
         }
-
 
 
 

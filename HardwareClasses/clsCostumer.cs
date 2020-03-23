@@ -1,7 +1,7 @@
 ﻿using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 
 namespace HardwareClasses
@@ -10,105 +10,99 @@ namespace HardwareClasses
     {
         private Boolean mActive;
 
-
-
-        //public property for active
         public bool Active
         {
             get
             {
-                //return the private data
                 return mActive;
             }
             set
             {
-                //set the private data
                 mActive = value;
             }
         }
 
-        //private date added data member
+
+
         private DateTime mCostumerDOB;
-        //public property for date added
+
         public DateTime CostumerDOB
         {
             get
             {
-                //return the private data
                 return mCostumerDOB;
             }
             set
             {
-                //set the private data
                 mCostumerDOB = value;
             }
         }
 
-        //private data member for the AddressNo property
+
+
         private string mCostumerAddress;
-        //public property for the address number
+
         public string CostumerAddress
         {
             get
             {
-                //return the private data
                 return mCostumerAddress;
             }
             set
             {
-                //set the value of the private data member
                 mCostumerAddress = value;
             }
         }
 
 
+
         private string mEmail;
-        //public data member for Town
+
         public string Email
         {
             get
             {
-                //return the private data
                 return mEmail;
             }
             set
             {
-                //set the private data
                 mEmail = value;
             }
         }
 
+
+
         private string mName;
-        //public data member for Town
+
         public string Name
         {
             get
             {
-                //return the private data
                 return mName;
             }
             set
             {
-                //set the private data
                 mName = value;
             }
         }
 
+
+
         private Int32 mCostumerID;
-        //public data member for Town
+
         public Int32 CostumerID
         {
             get
             {
-                //return the private data
                 return mCostumerID;
             }
             set
             {
-                //set the private data
-                mCostumerID = value;
+               mCostumerID = value;
             }
         }
+
+
 
         public bool Find(int CostumerID)
         {
@@ -135,6 +129,79 @@ namespace HardwareClasses
         }
 
 
+        public string Valid(Int32 CostumerID, string Name, string CostumerAddress, DateTime CostumerDOB, Boolean active)
+        {
+           
+            String Error = "";
+           if (CostumerID== 0)
+            {
+                Error = Error + "The partNo may not be blank: ";
+            }
+
+            if (CostumerID > 55454)
+            {
+                Error = Error + "ThepartNo must be less than 55454 numbers: ";
+            }
+
+
+        try
+            {
+                Int32 CostumerIDTemp = Convert.ToInt32(CostumerID);
+                if (CostumerIDTemp < Int32.Now.CostumerID)
+                {
+                    Error = Error + "The date cannot be in the past: ";
+                }
+
+                if (DateTemp > Int32.Now.CostumerID)
+                {
+                    Error = Error + "The date cannot be in the future: ";
+                }
+
+            }
+
+            catch
+            {
+
+                Error = Error + "CostumerID was not a valid number : ";
+
+                }
+
+           if (CostumerAddress.Length == 0)
+            {
+                Error = Error + "The Address may not be blank : ";
+            }
+           
+
+            if (Name.Length == 0)
+            {
+                Error = Error + "Name should not be blank : ";
+            }
+
+
+            if (Email.Length < 5)
+            {
+
+                Error = Error + "The email should be at least bigger than 5 characters  : ";
+            }
+
+            if (Active == false)
+            {
+
+                Error = Error + "Active must be true: ";
+            }
+
+            if (CostumerDOB.Date < 1/01/2014)
+            {
+
+                Error = Error + "The age of the member should be bigger : ";
+            }
+
+
+
+
+            return Error;
+            }
+            
 
 
     }
