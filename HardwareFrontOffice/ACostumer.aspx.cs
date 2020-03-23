@@ -1,27 +1,43 @@
 ﻿using System;
+using HardwareClasses;
 using System.Collections.Generic;
-//using System.Linq;
+using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using HardwareClasses;
+using System.Web.UI.WebControls.WebParts;
+
 
 public partial class ACostumer : System.Web.UI.Page
 {
+     int CostumerID;
+
+    
+
     protected void Page_Load(object sender, EventArgs e)
     {
-        //create a new instance of clsCostumer
-        clsCostumer ACostumer = new clsCostumer();
-        //get the data from the session object
-        ACostumer = (clsCostumer)Session["ACostumer"];
-        //display the house number for this entry
-        Response.Write(ACostumer.CostumerID);
-
+        CostumerID = Convert.ToInt32(Session["ID"]);
+        if (IsPostBack == false)
+        {
+            if (CostumerID != -1)
+            {
+                
+            }
+        }
+    }
+    void DisplayCostumer ()
+    {
+        clsCostumer ACostumer= new clsCostumer();
+        txtCostumerID.Text = ACostumer.CostumerID();
+        txtName.Text = ACostumer.Name.ToString();
+        txtCostumerAddress.Text = ACostumer.CostumerAddress.ToString();
+        txtCostumerDOB.Text = ACostumer.CostumerDOB.ToString();
+        txtEmail.Text = ACostumer.Email.ToString();
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
-        //create a new instance of clsAddress();
+       
         clsCostumer ACostumer = new clsCostumer();
        
         ACostumer.CostumerAddress = Convert.ToInt32(txtCostumerAddress.Text);
@@ -40,7 +56,7 @@ public partial class ACostumer : System.Web.UI.Page
 
 
         //redirect to the viwer page
-        Response.Write("CostumerViewer.aspx");
+        //Response.Write("CostumerViewer.aspx");
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
