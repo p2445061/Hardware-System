@@ -147,9 +147,9 @@ namespace HardwareClasses
         try
             {
                 Int32 CostumerIDTemp = Convert.ToInt32(CostumerID);
-                if (CostumerIDTemp < Int32.Now.CostumerID)
+                if (CostumerIDTemp <= 0)
                 {
-                    Error = Error + "The date cannot be in the past: ";
+                    Error = Error + "Costumer ID should be greater than zero:";
                 }
 
                 if (DateTemp > Int32.Now.CostumerID)
@@ -190,11 +190,17 @@ namespace HardwareClasses
                 Error = Error + "Active must be true: ";
             }
 
-            if (CostumerDOB.Date < 1/01/2014)
+            try{
+             DateTime DOBtemp = Convert.ToDateTime(costumerDOB);
+             if   (CostumerDOB.Date > DateTime.Now.Date.AddYears(-18))
             {
 
-                Error = Error + "The age of the member should be bigger : ";
+                Error = Error + "The age of the member should be 18 or older : ";
             }
+             }
+            catch
+            {
+}           Error = Error + "DOB not valid :";
 
 
 
@@ -203,6 +209,6 @@ namespace HardwareClasses
             }
             
 
-
+        
     }
 }
