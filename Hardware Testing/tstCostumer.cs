@@ -16,9 +16,6 @@ namespace Hardware_Testing
         Boolean Active = true;
 
 
-
-
-
         [TestMethod]
         public void InstanceOK()
         {
