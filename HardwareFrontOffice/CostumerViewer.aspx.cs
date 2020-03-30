@@ -20,28 +20,5 @@ public partial class CostumerViewer : System.Web.UI.Page
 
     }
 
-    protected void BtnOK_Click(object sender, EventArgs e)
-    {
-        clsCostumer ACostumer = new clsCostumer();
-
-
-
-        ACostumer.CostumerAddress = txtCostumerAddress.txt;
-
-        ACostumer.Name = txtName.txt;
-
-        ACostumer.Email = txtEmail.txt;
-
-        ACostumer.Active = txtActive.txt;
-
-        Session["ACostumer"] = ACostumer;
-
-        ACostumer.CostumerDOB = txtCostumerDOB.txt;
-
-        ACostumer.CostumerID = txtCostumerID.txt;
-        
-
-
-       
-    }
+   
 }
