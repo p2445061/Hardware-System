@@ -35,29 +35,44 @@ public partial class ACostumer : System.Web.UI.Page
         txtEmail.Text = ACostumer.Email.ToString();
     }
 
-   // protected void btnOK_Click(object sender, EventArgs e)
-   // {
-       
-        //clsCostumer ACostumer = new clsCostumer();
-       
-        //ACostumer.CostumerAddress = Convert.ToInt32(txtCostumerAddress.Text);
-   
-       // ACostumer.Name = txtName.Text;
-        
-       // ACostumer.Email = txtEmail.Text;
-        
-       // ACostumer.Active = Active.Checked;
-        
-       // Session["ACostumer"] = ACostumer;
-        
-       // ACostumer.CostumerDOB = Convert.ToDateTime(txtCostumerDOB.Text);
-        
-       // ACostumer.CostumerID = txtCostumerID.Text;
+    protected void BtnOK_Click(object sender, EventArgs e)
+    {
+        clsCostumer ACostumer = new clsCostumer();
+        string CostumerID = txtID.Text;
+        string Name = txtName.Text;
+        string CostumerAddress = txtCostumerAddress.Text;
+        string CostumerDOB = txtCostumerDOB.Text;
+        string Email = txtEmail.Text;
 
+        string Error = "";
+        Error = staff.Valid(CostumerID, Name, CostumerAddress, CostumerDOB, Email);
+        if (Error == "")
+        {
 
-        //redirect to the viwer page
-        //Response.Write("CostumerViewer.aspx");
-   // }
+            ACostumer.CostumerID = Convert.ToInt32(ID);
+            ACostumer.Name = Name;
+            ACostumer.CostumerAddress = CostumerAddress;
+            ACostumer.DOB = Convert.ToDateTime(CostumerDOB);
+            ACostumer.Email = Email;
+           // clsStaffCollection StaffList = new clsStaffCollection();
+            if (Convert.ToInt32(CostumerID) == -1)
+            {
+            //    StaffList.ThisStaff = staff;
+              //  StaffList.Add();
+            }
+            else
+            {
+            //    StaffList.ThisStaff.Find(Convert.ToInt32(ID));
+              //  StaffList.ThisStaff = staff;
+               // StaffList.Update();
+            }
+       //     Response.Redirect("StaffList.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
+    }
 
     protected void btnFind_Click(object sender, EventArgs e)
     {
@@ -79,10 +94,12 @@ public partial class ACostumer : System.Web.UI.Page
             txtCostumerID = ACostumer.ToString();
            
         }
-
-
-
-        
+ 
     }
-  
+
+
+   // protected void btnCan_Click(object sender, EventArgs e)
+    //{
+      //  Response.Redirect("StaffList.aspx");
+    //}
 }
