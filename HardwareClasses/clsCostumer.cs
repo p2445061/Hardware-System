@@ -104,7 +104,7 @@ namespace HardwareClasses
 
 
 
-        public bool Find(int CostumerID)
+        public bool Find(Int32 CostumerID)
         {
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@CostumerID",CostumerID);
@@ -152,11 +152,7 @@ namespace HardwareClasses
                     Error = Error + "Costumer ID should be greater than zero:";
                 }
 
-                if (DateTemp > Int32.Now.CostumerID)
-                {
-                    Error = Error + "The date cannot be in the future: ";
-                }
-
+                
             }
 
             catch
@@ -191,7 +187,7 @@ namespace HardwareClasses
             }
 
             try{
-             DateTime DOBtemp = Convert.ToDateTime(costumerDOB);
+             DateTime DOBtemp = Convert.ToDateTime(CostumerDOB);
              if   (CostumerDOB.Date > DateTime.Now.Date.AddYears(-18))
             {
 
