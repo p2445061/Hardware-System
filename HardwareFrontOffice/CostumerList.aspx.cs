@@ -19,16 +19,72 @@ public partial class StaffList : System.Web.UI.Page
 
     void DisplayCostumer()
     {
-        Class_Library.clsCostumerCollection ACostumer = new Class_Library.clsCostumerCollection();
+        clsCostumerCollection ACostumer = new clsCostumerCollection();
 
-        lstCostumers.DataSource = Coostumers.CostumerList;
+        lstCostumerList.DataSource = Costumer.CostumerList;
 
-        lstCostumesr.DataTextField = "CostumerNo";
+        lstCostumerList.DataValueField = "CostumerID";
 
-        lstCostumers.DataBind();
+        lstCostumerList = "Name";
+
+        lstCostumerList.DataBind();
     }
 
- 
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        Session["CostumerID"] = -1;
+        Response.Redirect("Costumer.aspx");
+    }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        int CostumerID;
+        if (lstCostumerList.SelectedIndex != -1)
+        {
+            ID = Convert.ToInt32(lstCostumerList.SelectedValue);
+            Session["CostumerID"] = CostumerID;
+            Response.Redirect("DeleteCostumer.aspx");
+        }
+        else
+        {
+            lblError.Text = "Please select a record to delete from the list";
+        }
+    }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        int CostumerID;
+        if (lstCostumerList.SelectedIndex != -1)
+        {
+            ID = Convert.ToInt32(lstCostumerList.SelectedValue);
+            Session["CostumerID"] = CostumerID;
+            Response.Redirect("Costumer.aspx");
+        }
+        else
+        {
+            lblError.Text = "Please select a record to edit from the list";
+        }
+    }
+
+    protected void btnApply_Click(object sender, EventArgs e)
+    {
+        clsCostumerCollection CostumerList = new clsCostumerCollection();
+        CostumerList.ReportByName(txtfilter.Text);
+        lstCostumerList.DataSource = StaffList.StaffList;
+        lstCostumerList.DataValueField = "CostumerID";
+        lstCostumerList.DataValueField = "Name";
+        lstCostumerList.DataBind();
+    }
+
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        clsCostumerCollection CostumerList = new clsCostumerCollection();
+        CostumerList.ReportByName("");
+        txtfilter.Text = "";
+        lstCostumerList.DataSource = CostumerList.CostumerList;
+        lstCostumerList.DataValueField = "CostumerID";
+        lstCostumerList.DataValueField = "Name";
+        lstCostumerList.DataBind();
+    }
 }
-
-

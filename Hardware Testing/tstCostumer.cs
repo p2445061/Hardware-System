@@ -80,9 +80,9 @@ namespace Hardware_Testing
             //boolean variable to store the result of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 AddressNo = 1;
+            Int32 CostumerID = 1;
             //invoke the method
-            Found = ACostumer.Find(AddressNo);
+            Found = ACostumer.Find(CostumerID);
             //test to see that the result is correct
             Assert.IsTrue(Found);
         }
@@ -110,7 +110,7 @@ namespace Hardware_Testing
             //boolean variable to store the result of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 Email = 1;
+                String Email = "jamesm@hotmail.com";
             //invoke the method
             Found = ACostumer.Find(Email);
             //test to see that the result is correct
@@ -125,7 +125,7 @@ namespace Hardware_Testing
             //boolean variable to store the result of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 CostumerDOB = 1;
+            DateTime CostumerDOB = "" + DateTime.Now.Date;
             //invoke the method
             Found = ACostumer.Find(CostumerDOB);
             //test to see that the result is correct
@@ -135,28 +135,7 @@ namespace Hardware_Testing
 
 
 
-     //   [TestMethod]
-      //  public void TestCostumerAddressFound()
-      //  {
-       //     //create an instance of the class we want to create
-         //   clsCostumer ACostumer = new clsCostumer();
-            //boolean variable to store the result of the search
-           // Boolean Found = false;
-            //boolean variable to record if data is OK (assume it is)
-        //    Boolean OK = true;
-            //create some test data to use with the method
-          //  Int32 CostumerID = 21;
-            //invoke the method
-          //  Found = ACostumer.Find(CostumerID);
-            //check the address no
-            //if (ACostumer.CostumerAddress != 21)
-          //  {
-            //    OK = false;
-         //   }
-            //test to see that the result is correct
-          //  Assert.IsTrue(OK);
-       // }
-
+     
 
 
         [TestMethod]
@@ -169,9 +148,9 @@ namespace Hardware_Testing
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CostumerID = 21;
+            String Name = "James";
             //invoke the method
-            Found = ACostumer.Find(CostumerID);
+            Found = ACostumer.Find(Name);
             //check the property
             if (ACostumer.Name != "Test Name")
             {
@@ -194,9 +173,9 @@ namespace Hardware_Testing
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CostumerID = 21;
+            DateTime CostumerDOB = "" + DateTime.Now.Date;
             //invoke the method
-            Found = ACostumer.Find(CostumerID);
+            Found = ACostumer.Find(CostumerDOB);
             //check the property
             if (ACostumer.CostumerDOB!= Convert.ToDateTime("16/09/2015"))
             {
@@ -206,74 +185,6 @@ namespace Hardware_Testing
             Assert.IsTrue(OK);
         }
 
-
-
-     //   [TestMethod]
-     //   public void TestActiveFound()
-     //   {
-            //create an instance of the class we want to create
-     //       clsCostumer ACostumer = new clsCostumer();
-            //boolean variable to store the result of the search
-     //       Boolean Found = false;
-            //boolean variable to record if data is OK (assume it is)
-      //      Boolean OK = true;
-            //create some test data to use with the method
-     //       Int32 CostumerID = 21;
-            //invoke the method
-     //       Found = ACostumer.Find(CostumerID);
-            //check the property
-     //       if (ACostumer.Active != true)
-     //       {
-      //          OK = false;
-      //      }
-            //test to see that the result is correct
-     //       Assert.IsTrue(OK);
-      //  }
-
-     //   [TestMethod]
-     //   public void TestEmailFound()
-     //   {
-            //create an instance of the class we want to create
-     //       clsCostumer ACostumer = new clsCostumer();
-            //boolean variable to store the result of the search
-     //       Boolean Found = false;
-            //boolean variable to record if data is OK (assume it is)
-     //       Boolean OK = true;
-            //create some test data to use with the method
-     //       Int32 CostumerID = 21;
-            //invoke the method
-     //       Found = ACostumer.Find(CostumerID);
-            //check the property
-     //       if (ACostumer.Email != true)
-     //       {
-     //           OK = false;
-     //       }
-            //test to see that the result is correct
-      //      Assert.IsTrue(OK);
-      //  }
-
-
-     //   [TestMethod]
-     //  public void TestCostumerIDFound()
-     //   {
-            //create an instance of the class we want to create
-     //       clsCostumer ACostumer = new clsCostumer();
-            //boolean variable to store the result of the search
-     //       Boolean Found = false;
-            //boolean variable to record if data is OK (assume it is)
-     //       Boolean OK = true;
-            //create some test data to use with the method
-     //       Int32 CostumerID = 21;
-            //invoke the method
-     //       Found = ACostumer.Find(CostumerID);
-            //check the property
-     //       if (ACostumer.CostumerID != true)
-      //      {
-       //         OK = false;
-      //      }
-            //test to see that the result is correct
-      //      Assert.IsTrue(OK);
-      //  }
 
 
         [TestMethod]
@@ -372,93 +283,7 @@ namespace Hardware_Testing
             Assert.AreNotEqual(Error, "");
         }
 
-        //CostumerID
-
-        [TestMethod]
-        public void CostumerIDMinLessOne()
-        {
-            clsCostumer aCostumer = new clsCostumer();
-            string Error = "";
-            CostumerID = "";
-            Error = aCostumer.Valid(CostumerID, Name, CostumerAddress, CostumerDOB, Email, Active);
-            Assert.AreNotEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void CostumerIDMin()
-        {
-            clsCostumer aCostumer = new clsCostumer();
-            string Error = "";
-            CostumerID = "a";
-            Error = aCostumer.Valid(CostumerID, Name, CostumerAddress, CostumerDOB, Email, Active);
-            Assert.AreEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void CostumerIDMinPlusOne()
-        {
-            clsCostumer aCostumer = new clsCostumer();
-            string Error = "";
-            CostumerID = "aa";
-            Error = aCostumer.Valid(CostumerID, Name, CostumerAddress, CostumerDOB, Email, Active);
-            Assert.AreEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void CostumerIDMaxLessOne()
-        {
-            clsCostumer aCostumer = new clsCostumer();
-            string Error = "";
-            CostumerID = "";
-            CostumerID = CostumerID.PadRight(49, 'a');
-            Error = aCostumer.Valid(CostumerID, Name, CostumerAddress, CostumerDOB, Email, Active);
-            Assert.AreEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void CostumerIDMax()
-        {
-            clsCostumer aCostumer = new clsCostumer();
-            string Error = "";
-            CostumerID = "";
-            CostumerID = CostumerID.PadRight(50, 'a');
-            Error = aCostumer.Valid(CostumerID, Name, CostumerAddress, CostumerDOB, Email, Active);
-            Assert.AreEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void CostumerIDMaxPlusOne()
-        {
-            clsCostumer aCostumer = new clsCostumer();
-            string Error = "";
-            CostumerID = "";
-            CostumerID = CostumerID.PadRight(51, 'a');
-            Error = aCostumer.Valid(CostumerID, Name, CostumerAddress, CostumerDOB, Email, Active);
-            Assert.AreNotEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void CostumerIDMid()
-        {
-            clsCostumer aCostumer = new clsCostumer();
-            string Error = "";
-            CostumerID = "";
-            CostumerID = CostumerID.PadRight(25, 'a');
-            Error = aCostumer.Valid(CostumerID, Name, CostumerAddress, CostumerDOB, Email, Active);
-            Assert.AreEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void CostumerIDEXMax()
-        {
-            clsCostumer aCostumer = new clsCostumer();
-            string Error = "";
-            CostumerID = "";
-            CostumerID = CostumerID.PadRight(500, 'a');
-            Error = aCostumer.Valid(CostumerID, Name, CostumerAddress, CostumerDOB, Email, Active);
-            Assert.AreNotEqual(Error, "");
-        }
-
+       
 
         //CostumerDOB
 
@@ -467,7 +292,9 @@ namespace Hardware_Testing
         {
             clsCostumer aCostumer = new clsCostumer();
             string Error = "";
-            CostumerDOB = TestDate.ToString;
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            CostumerDOB = TestDate.ToString();
             Error = aCostumer.Valid(CostumerID, Name, CostumerAddress, CostumerDOB, Email, Active);
             Assert.AreEqual(Error, "");
         }
@@ -477,10 +304,13 @@ namespace Hardware_Testing
         {
             clsCostumer aCostumer = new clsCostumer();
             string Error = "";
-            CostumerDOB TestDate;
-            CostumerDOB = TestDate.ToString;
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(-1);
+            CostumerDOB = TestDate.ToString();
             Error = aCostumer.Valid(CostumerID, Name, CostumerAddress, CostumerDOB, Email, Active);
             Assert.AreEqual(Error, "");
+
         }
 
         [TestMethod]
@@ -488,36 +318,48 @@ namespace Hardware_Testing
         {
             clsCostumer aCostumer = new clsCostumer();
             string Error = "";
-            DOB = TestDate.ToString;
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            CostumerDOB = TestDate.ToString();
             Error = staff.Valid(CostumerID, Name, CostumerAddress, CostumerDOB, Email, Active);
             Assert.AreEqual(Error, "");
         }
 
-        [TestMethod]
+
+
+
+    [TestMethod]
         public void CostumerDOBMaxPlusOne()
         {
             clsCostumer aCostumer = new clsCostumer();
             string Error = "";
-
-            CostumerDOB = TestDate.ToString;
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(1);
+            CostumerDOB = TestDate.ToString();
             Error = aCostumer.Valid(CostumerID, Name, CostumerAddress, CostumerDOB, Email, Active);
             Assert.AreNotEqual(Error, "");
         }
+
+
+       
 
         [TestMethod]
         public void CostumerDOBEXMax()
         {
             clsCostumer aCostumer = new clsCostumer();
             string Error = "";
-
-            CostumerDOB = TestDate.ToString;
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(100);
+            CostumerDOB = TestDate.ToString();
             Error = aCostumer.Valid(CostumerID, Name, CostumerAddress, CostumerDOB, Email, Active);
             Assert.AreNotEqual(Error, "");
         }
-
-
+       
 
         //CostumerAddress
+
         [TestMethod]
         public void CostumerAddressMinLessOne()
         {
@@ -527,6 +369,7 @@ namespace Hardware_Testing
             Error = aCostumer.Valid(CostumerID, Name, CostumerAddress, CostumerDOB, Email, Active);
             Assert.AreNotEqual(Error, "");
         }
+        
 
         [TestMethod]
         public void CostumerAddressMin()
@@ -692,20 +535,6 @@ namespace Hardware_Testing
         }
 
 
-
-        [TestMethod]
-        public void CostumerIDInvalidData()
-        {
-            clsCostumer ACostumer = new clsCostumer();
-
-            String Error = "";
-
-            //Int32 CostumerID = "this is not a valid ID";
-
-            //Error = aCostumer.Valid(CostumerID, Name, CostumerAddress, CostumerDOB, Email, Active);
-
-            // Assert.ArenotEqual(Error, "");
-        }
 
 
 

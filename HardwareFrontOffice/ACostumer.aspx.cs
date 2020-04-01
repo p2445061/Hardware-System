@@ -21,7 +21,7 @@ public partial class ACostumer : System.Web.UI.Page
         {
             if (CostumerID != -1)
             {
-                
+                //
             }
         }
     }
@@ -54,19 +54,21 @@ public partial class ACostumer : System.Web.UI.Page
             ACostumer.CostumerAddress = CostumerAddress;
             ACostumer.DOB = Convert.ToDateTime(CostumerDOB);
             ACostumer.Email = Email;
-           // clsStaffCollection StaffList = new clsStaffCollection();
+
+            clsCostumerCollection CostumerList = new clsCostumerCollection();
+
             if (Convert.ToInt32(CostumerID) == -1)
             {
-            //    StaffList.ThisStaff = staff;
-              //  StaffList.Add();
+                    CostumerList.ThisCostumer = Costumer;
+                CostumerList.Add();
             }
             else
             {
-            //    StaffList.ThisStaff.Find(Convert.ToInt32(ID));
-              //  StaffList.ThisStaff = staff;
-               // StaffList.Update();
+                CostumerList.ThisCostumer.Find(Convert.ToInt32(CostumerID));
+                CostumerList.ThisCostumer = Costumer;
+                CostumerList.Update();
             }
-       //     Response.Redirect("StaffList.aspx");
+          Response.Redirect("CostumerList.aspx");
         }
         else
         {
@@ -97,9 +99,8 @@ public partial class ACostumer : System.Web.UI.Page
  
     }
 
-
-   // protected void btnCan_Click(object sender, EventArgs e)
-    //{
-      //  Response.Redirect("StaffList.aspx");
-    //}
+    protected void btnCan_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("CostumerList.aspx");
+    }
 }
