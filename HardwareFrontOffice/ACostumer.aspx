@@ -6,9 +6,9 @@
 <head runat="server">
     <title></title>
 </head>
-<body>
+<body style="height: 317px">
     <form id="form1" runat="server">
-        CostumerId&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        CostumerID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="txtCostumerID" runat="server" style="height: 22px" OnTextChanged="txtCostumerId_TextChanged"></asp:TextBox>
         <asp:Button ID="btnFind" runat="server" Height="27px" OnClick="Button2_Click" Text="Find" Width="60px" />
         <br />
@@ -25,7 +25,6 @@
         <br />
         <asp:CheckBox ID="Active" runat="server" OnCheckedChanged="CheckBox1_CheckedChanged" />
         <br />
-        <asp:Button ID="Button1" runat="server" Text="Button" />
         <br />
     </form>
 </body>
