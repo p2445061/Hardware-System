@@ -16,7 +16,7 @@ public partial class ACostumer : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        CostumerID = Convert.ToInt32(Session["ID"]);
+        CostumerID = Convert.ToInt32(Session["CostumerID"]);
         if (IsPostBack == false)
         {
             if (CostumerID != -1)
@@ -45,7 +45,7 @@ public partial class ACostumer : System.Web.UI.Page
         string Email = txtEmail.Text;
 
         string Error = "";
-        Error = staff.Valid(CostumerID, Name, CostumerAddress, CostumerDOB, Email);
+        Error = ACostumer.Valid(CostumerID, Name, CostumerAddress, CostumerDOB, Email);
         if (Error == "")
         {
 
@@ -59,13 +59,13 @@ public partial class ACostumer : System.Web.UI.Page
 
             if (Convert.ToInt32(CostumerID) == -1)
             {
-                    CostumerList.ThisCostumer = Costumer;
+                    CostumerList.ThisCostumer = ACostumer;
                 CostumerList.Add();
             }
             else
             {
                 CostumerList.ThisCostumer.Find(Convert.ToInt32(CostumerID));
-                CostumerList.ThisCostumer = Costumer;
+                CostumerList.ThisCostumer = ACostumer;
                 CostumerList.Update();
             }
           Response.Redirect("CostumerList.aspx");

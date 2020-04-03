@@ -7,12 +7,39 @@
     <title></title>    
     <style type="text/css">
         #form1 {
-            height: 230px;
+            height: 166px;
+            width: 276px;
         }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">   
-        Unbound</form>
+        Unbound<br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <asp:Button ID="btnAdd" runat="server" Text="Add" Height="26px" OnClick="Button1_Click" />
+        <asp:Button ID="btnEdit" runat="server" Text="Edit" OnClick="Button1_Click" />
+        <asp:Button ID="btnDelete" runat="server" Text="Delete" OnClick="Button1_Click" />
+        <br />
+        <p>
+            Enter a post code <asp:TextBox ID="txt" runat="server" Width="134px"></asp:TextBox>
+        </p>
+        <p>
+        <asp:Button ID="btnApply" runat="server" Text="Apply" Height="26px" OnClick="Button1_Click" />
+        &nbsp;
+        <asp:Button ID="btnClear" runat="server" Text="Clear" Height="26px" OnClick="Button1_Click" />
+        </p>
+    </form>
+    <p>
+        &nbsp;</p>
+    <p>
+        &nbsp;</p>
 </body>
 </html>
