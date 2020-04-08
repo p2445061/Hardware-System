@@ -24,9 +24,9 @@
         <br />
         <br />
         <br />
-        <asp:Button ID="btnAdd" runat="server" Text="Add" Height="26px" OnClick="Button1_Click" />
-        <asp:Button ID="btnEdit" runat="server" Text="Edit" OnClick="Button1_Click" />
-        <asp:Button ID="btnDelete" runat="server" Text="Delete" OnClick="Button1_Click" />
+        <asp:Button ID="btnAdd" runat="server" Text="Add" Height="26px" OnClick="btnAdd_Click_Click" />
+        <asp:Button ID="btnEdit" runat="server" Text="Edit" OnClick="btnEdit_Click" />
+        <asp:Button ID="btnDelete" runat="server" Text="Delete" OnClick="btnDelete_Click" />
         <br />
         <p>
             Enter a post code <asp:TextBox ID="txt" runat="server" Width="134px"></asp:TextBox>
