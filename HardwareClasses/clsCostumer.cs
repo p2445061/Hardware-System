@@ -6,7 +6,7 @@ using System.Text;
 
 namespace HardwareClasses
 {
-   public class clsCostumer
+    public class clsCostumer
     {
         private Boolean mActive;
 
@@ -98,7 +98,7 @@ namespace HardwareClasses
             }
             set
             {
-               mCostumerID = value;
+                mCostumerID = value;
             }
         }
 
@@ -107,16 +107,16 @@ namespace HardwareClasses
         public bool Find(Int32 CostumerID)
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@CostumerID",CostumerID);
+            DB.AddParameter("@CostumerID", CostumerID);
             DB.Execute("sprac_tblCostumer_FilterByCostumerID");
-            if(DB.Count==1)
+            if (DB.Count == 1)
             {
                 mCostumerID = Convert.ToInt32(DB.DataTable.Rows[0]["CostumerID"]);
                 mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
-                mName= Convert.ToString(DB.DataTable.Rows[0]["Name"]);
-                mCostumerDOB= Convert.ToDateTime(DB.DataTable.Rows[0]["CostumerDateOfBirth"]);
-                mEmail= Convert.ToString(DB.DataTable.Rows[0]["Email"]);
-                mCostumerAddress= Convert.ToString(DB.DataTable.Rows[0]["CostumerAddress"]);
+                mName = Convert.ToString(DB.DataTable.Rows[0]["Name"]);
+                mCostumerDOB = Convert.ToDateTime(DB.DataTable.Rows[0]["CostumerDateOfBirth"]);
+                mEmail = Convert.ToString(DB.DataTable.Rows[0]["Email"]);
+                mCostumerAddress = Convert.ToString(DB.DataTable.Rows[0]["CostumerAddress"]);
 
 
                 return true;
@@ -129,11 +129,11 @@ namespace HardwareClasses
         }
 
 
-        public string Valid(Int32 CostumerID, string Name, string CostumerAddress, DateTime CostumerDOB, Boolean active)
+        public string Valid(string CostumerID, string Name, string CostumerAddress, string CostumerDOB, string Email)
         {
-           
+
             String Error = "";
-           if (CostumerID== 0)
+            if (CostumerID == 0)
             {
                 Error = Error + "The partNo may not be blank: ";
             }
@@ -144,7 +144,7 @@ namespace HardwareClasses
             }
 
 
-        try
+            try
             {
                 Int32 CostumerIDTemp = Convert.ToInt32(CostumerID);
                 if (CostumerIDTemp <= 0)
@@ -152,7 +152,7 @@ namespace HardwareClasses
                     Error = Error + "Costumer ID should be greater than zero:";
                 }
 
-                
+
             }
 
             catch
@@ -160,13 +160,13 @@ namespace HardwareClasses
 
                 Error = Error + "CostumerID was not a valid number : ";
 
-                }
+            }
 
-           if (CostumerAddress.Length == 0)
+            if (CostumerAddress.Length == 0)
             {
                 Error = Error + "The Address may not be blank : ";
             }
-           
+
 
             if (Name.Length == 0)
             {
@@ -186,25 +186,27 @@ namespace HardwareClasses
                 Error = Error + "Active must be true: ";
             }
 
-            try{
-             DateTime DOBtemp = Convert.ToDateTime(CostumerDOB);
-             if   (CostumerDOB.Date > DateTime.Now.Date.AddYears(-18))
+            try
             {
+                DateTime DOBtemp = Convert.ToDateTime(CostumerDOB);
+                if (DOBtemp > DateTime.Now.Date.AddYears(-18))
+                {
 
-                Error = Error + "The age of the member should be 18 or older : ";
+                    Error = Error + "The age of the member should be 18 or older : ";
+                }
             }
-             }
             catch
             {
-}           Error = Error + "DOB not valid :";
+            }
+            Error = Error + "DOB not valid :";
 
 
 
 
             return Error;
-            }
-            
+        }
 
-        
+
+
     }
 }
