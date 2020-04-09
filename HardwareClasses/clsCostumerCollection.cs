@@ -7,6 +7,7 @@ using System.Collections.Generic;
 public class clsCostumerCollection
 {
     List<clsCostumer> mCostumerList = new List<clsCostumer>();
+    clsCostumer mThisCostumer = new clsCostumer();
 
     public List<clsCostumer> CostumerList
     {

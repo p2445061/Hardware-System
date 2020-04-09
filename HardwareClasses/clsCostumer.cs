@@ -129,7 +129,7 @@ namespace HardwareClasses
         }
 
 
-        public string Valid(string CostumerID, string Name, string CostumerAddress, string CostumerDOB, string Email)
+        public string Valid(Int32 CostumerID, string Name, string CostumerAddress, DateTime CostumerDOB, string Email)
         {
 
             String Error = "";
@@ -138,12 +138,7 @@ namespace HardwareClasses
                 Error = Error + "The partNo may not be blank: ";
             }
 
-            if (CostumerID > 55454)
-            {
-                Error = Error + "ThepartNo must be less than 55454 numbers: ";
-            }
-
-
+            
             try
             {
                 Int32 CostumerIDTemp = Convert.ToInt32(CostumerID);
