@@ -1,11 +1,12 @@
 ﻿using System;
 using HardwareClasses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 
-namespace Test_Framework
+namespace Hardware_Testing
 {
 
-
+    [TestClass]
     public class tstCostumerCollection
     {
 
@@ -44,8 +45,7 @@ namespace Test_Framework
         }
 
 
-        [TestMethod]
-        
+        [TestMethod] 
         public void  CountPropertyOK()
         {
             clsCostumerCollection AllCostumers = new clsCostumerCollection();
