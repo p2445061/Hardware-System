@@ -8,23 +8,29 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 
-    public partial class stock : System.Web.UI.Page
-    {
-        Int32 PartNo;
-        protected void Page_Load(object sender, EventArgs e)
+public partial class stock : System.Web.UI.Page
+{
+    Int32 PartNo;
+
+
+    protected void Page_Load(object sender, EventArgs e)
     {
         PartNo = Convert.ToInt32(Session["PartNo"]);
         if (IsPostBack == false)
         {
+            DisplayStock();
+
             if (PartNo != -1)
             {
-                DisplayStock();
+                DisplayParts();
             }
         }
 
-           
+
 
     }
+
+
 
     private void DisplayStock()
     {
@@ -40,50 +46,94 @@ using System.Web.UI.WebControls.WebParts;
 
     }
 
+    protected void btnCancel_Click1(object sender, EventArgs e)
+    {
+        Response.Redirect("Default.aspx");
+    }
+
     protected void btnOK_Click(object sender, EventArgs e)
     {
-        clsStock stock = new clsStock();
-
-        string PartDescription = txtPartDescription.Text;
-        string Price = txtPrice.Text;
-        string DateAdded = txtDate.Text;
-        string Quantity = txtQuantity.Text;
-        string Error = "";
-        Error = stock.Valid(Quantity, PartDescription, Price, DateAdded);
-        if (Error == "")
+        if (PartNo == -1)
         {
-
-            stock.PartDescription = txtPartDescription.Text;
-            stock.Price = Convert.ToInt32(this.txtPrice.Text);
-            stock.DateAdded = Convert.ToDateTime(txtDate.Text);
-            stock.Quantity = Convert.ToInt32(this.txtQuantity.Text);
-            stock.Available = ChkAvailable.Checked;
-
-            clsStockCollection StockList = new clsStockCollection();
-
-            if (PartNo == -1)
-            {
-                StockList.ThisStock = stock;
-                StockList.Add();
-            }
-            else
-            {
-                StockList.ThisStock.Find(PartNo);
-                StockList.ThisStock = stock;
-                StockList.Update();
-            }
-
-            Response.Redirect("StockList.aspx");
-
+            //add the new record
+            Add();
         }
         else
         {
-            lblError.Text = Error;
+            //update the record
+            Update();
         }
 
 
     }
-  
+
+    private void Add()
+    {
+        clsStockCollection AddressBook = new clsStockCollection();
+        //validate the data on the web form
+        String Error = AddressBook.ThisStock.Valid(txtPartDescription.Text, txtPrice.Text, txtQuantity.Text, txtDate.Text);
+        //if the data is OK then add it to the object
+        if (Error == "")
+        {
+            //get the data entered by the user
+            AddressBook.ThisStock.PartDescription = txtPartDescription.Text;
+            AddressBook.ThisStock.Price = Convert.ToInt32(txtPrice.Text);
+            AddressBook.ThisStock.Quantity = Convert.ToInt32(txtQuantity.Text);
+            AddressBook.ThisStock.DateAdded = Convert.ToDateTime(txtDate.Text);
+            AddressBook.ThisStock.Available = ChkAvailable.Checked;
+
+            //add the record
+            AddressBook.Add();
+            //all done so redirect back to the main page
+            Response.Redirect("DefaultStock.aspx");
+        }
+        else
+        {
+            //report an error
+            lblError.Text = "There were problems with the data entered " + Error;
+        }
+    }
+    private void Update()
+    {
+        HardwareClasses.clsStockCollection AddressBook = new HardwareClasses.clsStockCollection();
+        String Error = AddressBook.ThisStock.Valid(txtPrice.Text, txtPartDescription.Text, txtQuantity.Text, txtDate.Text);
+        //if the data is OK then add it to the object
+        if (Error == "")
+        {
+            //find the record to update
+            AddressBook.ThisStock.Find(PartNo);
+            //get the data entered by the user
+            AddressBook.ThisStock.PartDescription = txtPartDescription.Text;
+            AddressBook.ThisStock.Price = Convert.ToInt32(txtPrice.Text);
+            AddressBook.ThisStock.Quantity = Convert.ToInt32(txtQuantity.Text);
+
+            AddressBook.ThisStock.DateAdded = Convert.ToDateTime(txtDate.Text);
+            AddressBook.ThisStock.Available = ChkAvailable.Checked;
+
+            //update the record
+            AddressBook.Update();
+            //all done so redirect back to the main page
+            Response.Redirect("DefaultStock.aspx");
+        }
+        else
+        {
+            //report an error
+            lblError.Text = "There were problems with the data entered " + Error;
+        }
+    }
+    private void DisplayParts()
+    {
+        clsStockCollection AddressBook = new clsStockCollection();
+        //find the record to update
+        AddressBook.ThisStock.Find(PartNo);
+        //display the data for this record
+        txtPartDescription.Text = AddressBook.ThisStock.PartDescription;
+        AddressBook.ThisStock.Price = Convert.ToInt32(txtPrice.Text);
+        txtDate.Text = AddressBook.ThisStock.DateAdded.ToString();
+        AddressBook.ThisStock.Quantity = Convert.ToInt32(txtQuantity.Text);
+        ChkAvailable.Checked = AddressBook.ThisStock.Available;
+    }
+
     protected void btnFind_Click(object sender, EventArgs e)
     {
         clsStock stock = new clsStock();
@@ -104,5 +154,17 @@ using System.Web.UI.WebControls.WebParts;
         }
     }
 
-   
+    
 }
+   
+   
+    
+
+
+
+
+
+
+   
+
+
