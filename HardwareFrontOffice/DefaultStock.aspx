@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="StockList.aspx.cs" Inherits="StockList" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="DefaultStock.aspx.cs" Inherits="StockList" %>
 
 <!DOCTYPE html>
 

@@ -20,7 +20,25 @@ public partial class DeleteStock : System.Web.UI.Page
         clsStockCollection AddressBook = new clsStockCollection();
         AddressBook.ThisStock.Find(PartNo);
         AddressBook.Delete();
-        Response.Redirect("StockList.aspx");
+        Response.Redirect("DefaultStock.aspx");
+    }
+
+
+    protected void btnNo_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("DefaultStock.aspx");
+    }
+
+    void DeleteAddress()
+    {
+        //function to delete the selected record
+
+        //create a new instance of the address book
+        clsStockCollection AddressBook = new clsStockCollection();
+        //find the record to delete
+        AddressBook.ThisStock.Find(PartNo);
+        //delete the record
+        AddressBook.Delete();
     }
 
 }
