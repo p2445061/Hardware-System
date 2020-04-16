@@ -1,7 +1,7 @@
 ﻿using System;
 using HardwareClasses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
+
 
 namespace Hardware_Testing
 {
@@ -9,7 +9,7 @@ namespace Hardware_Testing
     [TestClass]
     public class tstCostumerCollection
     {
-
+        public clsCostumer ThisCostumer { get; private set; }
 
         [TestMethod]
         public void InstanceOK()
@@ -121,6 +121,27 @@ namespace Hardware_Testing
             AllCostumers.Update();
             AllCostumers.ThisCostumer.Find(PrimaryKey);
             Assert.AreEqual(AllCostumers.ThisCostumer, TestCostumer);
+        }
+
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            clsCostumerCollection AllCostumers = new clsCostumerCollection();
+
+            clsCostumer TestItem = new clsCostumer();
+            int PrimaryKey = 0;
+            TestCostumer.CostumerID = 1;
+            TestCostumer.Name = "James";
+            TestCostumer.CostumerAddress = "40 Glenfield Road";
+            TestCostumer.CostumerDOB = DateTime.Now.Date;
+            TestCostumer.Email = "james@hotmail.com";
+            TestCostumer.Active = true;
+
+            AllCostumers.ThisCostumer = TestItem;
+            PrimaryKey = AllCostumers.Add();
+            AllCostumers.ThisCostumer.Find(PrimaryKey);
+            Assert.AreEqual(AllCostumers.ThisCostumer, TestItem);
+
         }
 
         [TestMethod]

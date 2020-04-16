@@ -26,6 +26,10 @@
         <asp:CheckBox ID="Active" runat="server" />
         <br />
         <br />
+            <asp:Button ID="btnOK" runat="server" Text="OK" OnClick="btnOK_Click" />&nbsp;
+            <asp:Button ID="btnCan" runat="server" Text="Cancel" OnClick="btnCan_Click" />
+            
+        <br />
     </form>
 </body>
 </html>

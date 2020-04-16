@@ -20,5 +20,16 @@ public partial class CostumerViewer : System.Web.UI.Page
 
     }
 
-   
+    protected void btnOK_Click(object sender, EventArgs e)
+    {
+       clsCostumer ACostumer = new clsCostumer();
+
+
+        ACostumer.Name = txtName.Text;
+        ACostumer.CostumerID = Convert.ToInt32(this.txtCostumerID.Text);
+        ACostumer.CostumerAddress = txtCostumerAddress.Text;
+        ACostumer.Email = txtEmail.Text;
+        ACostumer.Name = txtName.Text;
+
+    }
 }

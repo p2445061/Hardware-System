@@ -129,7 +129,7 @@ namespace HardwareClasses
         }
 
 
-        public string Valid(Int32 CostumerID, string Name, string CostumerAddress, DateTime CostumerDOB, string Email)
+        public string Valid(Int32 CostumerID, string Name, string CostumerAddress, DateTime CostumerDOB, string Email, Boolean Active)
         {
 
             String Error = "";

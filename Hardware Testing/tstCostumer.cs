@@ -19,9 +19,9 @@ namespace Hardware_Testing
         [TestMethod]
         public void InstanceOK()
         {
-            //create an instance of the class we want to create
+            
             clsCostumer ACostumer = new clsCostumer();
-            //test to is if exists
+           
             Assert.IsNotNull(ACostumer);
             
 
@@ -31,13 +31,13 @@ namespace Hardware_Testing
         [TestMethod]
         public NamePropertyOK()
         {
-            //create an instance of the class we want to create
+            
             clsCostumer ACostumer = new clsCostumer();
-            //create some test data to assign to the property
+           
            string TestData = "james";
-            //assign the data to the property
+           
             ACostumer.Name = TestData;
-            //test to see that the two values are the same
+           
             Assert.AreEqual(ACostumer.Name, TestData);
         }
 
@@ -45,13 +45,13 @@ namespace Hardware_Testing
         [TestMethod]
         public ActveOK()
         {
-            //create an instance of the class we want to create
+            
             clsCostumer ACostumer = new clsCostumer();
-            //create some test data to assign to the property
+          
             Boolean TestData = true;
-            //assign the data to the property
+
             ACostumer.Active = TestData;
-            //test to see that the two values are the same
+            
             Assert.AreEqual(ACostumer.Active, TestData);
         }
 
@@ -59,13 +59,13 @@ namespace Hardware_Testing
         [TestMethod]
         public void CostumerAddressOK()
         {
-            //create an instance of the class we want to create
+           
             clsCostumer ACostumer = new clsCostumer();
-            //create some test data to assign to the property
+          
             string TestData = "$0 Glenfield Road";
-            //assign the data to the property
+   
             ACostumer.CostumerAddress = TestData;
-            //test to see that the two values are the same
+          
             Assert.AreEqual(ACostumer.CostumerAddress, TestData);
 
 
@@ -75,45 +75,45 @@ namespace Hardware_Testing
         [TestMethod]
         public void FindMethodOK()
         {
-            //create an instance of the class we want to create
+           
             clsCostumer ACostumer = new clsCostumer();
-            //boolean variable to store the result of the validation
+           
             Boolean Found = false;
-            //create some test data to use with the method
+            
             Int32 CostumerID = 1;
-            //invoke the method
+           
             Found = ACostumer.Find(CostumerID);
-            //test to see that the result is correct
+           
             Assert.IsTrue(Found);
         }
 
         [TestMethod]
         public void CostumerIDOK()
         {
-            //create an instance of the class we want to create
+            
             clsCostumer ACostumer = new clsCostumer();
-            //boolean variable to store the result of the validation
+            
             Boolean Found = false;
-            //create some test data to use with the method
+            
             Int32 CostumerID = 1;
-            //invoke the method
+            
             Found = ACostumer.Find(CostumerID);
-            //test to see that the result is correct
+            
             Assert.IsTrue(Found);
         }
 
         [TestMethod]
         public void EmailOK()
         {
-            //create an instance of the class we want to create
+            
             clsCostumer ACostumer = new clsCostumer();
-            //boolean variable to store the result of the validation
+           
             Boolean Found = false;
-            //create some test data to use with the method
-                String Email = "jamesm@hotmail.com";
-            //invoke the method
+           
+            String Email = "jamesm@hotmail.com";
+           
             Found = ACostumer.Find(Email);
-            //test to see that the result is correct
+           
             Assert.IsTrue(Found);
         }
 
@@ -134,29 +134,25 @@ namespace Hardware_Testing
 
 
 
-
-     
-
-
         [TestMethod]
         public void TestNameFound()
         {
-            //create an instance of the class we want to create
+            
             clsCostumer ACostumer = new clsCostumer();
-            //boolean variable to store the result of the search
+            
             Boolean Found = false;
-            //boolean variable to record if data is OK (assume it is)
+           
             Boolean OK = true;
-            //create some test data to use with the method
+           
             String Name = "James";
-            //invoke the method
+            
             Found = ACostumer.Find(Name);
-            //check the property
+            
             if (ACostumer.Name != "Test Name")
             {
                 OK = false;
             }
-            //test to see that the result is correct
+           
             Assert.IsTrue(OK);
         }
 
@@ -166,22 +162,22 @@ namespace Hardware_Testing
         [TestMethod]
         public void TestCostumerDOBFound()
         {
-            //create an instance of the class we want to create
+            
             clsCostumer ACostumer = new clsCostumer();
-            //boolean variable to store the result of the search
+          
             Boolean Found = false;
-            //boolean variable to record if data is OK (assume it is)
+           
             Boolean OK = true;
-            //create some test data to use with the method
+          
             DateTime CostumerDOB = "" + DateTime.Now.Date;
-            //invoke the method
+           
             Found = ACostumer.Find(CostumerDOB);
-            //check the property
+           
             if (ACostumer.CostumerDOB!= Convert.ToDateTime("16/09/2015"))
             {
                 OK = false;
             }
-            //test to see that the result is correct
+           
             Assert.IsTrue(OK);
         }
 
