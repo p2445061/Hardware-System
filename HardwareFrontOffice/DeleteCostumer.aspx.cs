@@ -27,4 +27,15 @@ public partial class DeleteCostumer : System.Web.UI.Page
     {
         Response.Redirect("CostumerList.aspx");
     }
+
+
+    protected void DeleteAddress()
+    {
+       
+        clsCostumerCollection CostumerList = new clsCostumerCollection();
+        
+        CostumerList.ThisCostumer.Find(CostumerID);
+       
+        ACostumer.Delete();
+    }
 }
