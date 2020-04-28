@@ -10,7 +10,7 @@ using System.Web.UI.WebControls.WebParts;
 
 public partial class ACostumer : System.Web.UI.Page
 {
-    int CostumerID;
+    Int32 CostumerID;
 
 
 
@@ -19,15 +19,17 @@ public partial class ACostumer : System.Web.UI.Page
         CostumerID = Convert.ToInt32(Session["CostumerID"]);
         if (IsPostBack == false)
         {
+            DisplayCostumer();
+
             if (CostumerID != -1)
             {
-                //
+                DisplayCostumer();
             }
         }
     }
     void DisplayCostumer()
     {
-        clsCostumer ACostumer = new clsCostumer();
+        Class_Library.clsCostumerCollection Costumers = new Class_Library.clsCostumerCollection();
         txtCostumerID.Text = ACostumer.CostumerID.ToString();
         txtName.Text = ACostumer.Name.ToString();
         txtCostumerAddress.Text = ACostumer.CostumerAddress.ToString();
@@ -35,70 +37,73 @@ public partial class ACostumer : System.Web.UI.Page
         txtEmail.Text = ACostumer.Email.ToString();
     }
 
+
+    //this is the event handler for the cancel button
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        //redirect to the main page
+        Response.Redirect("Default.aspx");
+    }
+ 
     protected void BtnOK_Click(object sender, EventArgs e)
     {
-        clsCostumer ACostumer = new clsCostumer();
-        string CostumerID = txtCostumerID.Text;
-        string Name = txtName.Text;
-        string CostumerAddress = txtCostumerAddress.Text;
-        string CostumerDOB = txtCostumerDOB.Text;
-        string Email = txtEmail.Text;
+        if (CostumerID == -1)
+        {
+            //add the new record
+            Add();
+        }
+        else
+        {
+            //update the record
+            Update();
+        }
+    }
 
-        string Error = "";
-        Error = ACostumer.Valid(CostumerID, Name, CostumerAddress, CostumerDOB, Email);
+    //function for adding new records
+    void Add()
+    {
+        //create an instance of the address book
+        clsCostumerCollection AddressBook = new clsCostumerCollection();
+        //validate the data on the web form
+        String Error = AddressBook.ThisAddress.Valid(txtCostumerID Text, txtName Text, txtCostumerAddress Text, txtCostumerDOB Text, txtEmail Text);
+        //if the data is OK then add it to the object
         if (Error == "")
         {
+            //get the data entered by the user
+            clsCostumerCollection AddressBook = new clsCostumerCollection();
+            txtCostumerID.Text = ACostumer.CostumerID.ToString();
+            txtName.Text = ACostumer.Name.ToString();
+            txtCostumerAddress.Text = ACostumer.CostumerAddress.ToString();
+            txtCostumerDOB.Text = ACostumer.CostumerDOB.ToString();
+            txtEmail.Text = ACostumer.Email.ToString();
 
-            ACostumer.CostumerID = Convert.ToInt32(ID);
-            ACostumer.Name = Name;
-            ACostumer.CostumerAddress = CostumerAddress;
-            ACostumer.CostumerDOB = Convert.ToDateTime(CostumerDOB);
-            ACostumer.Email = Email;
-
-            clsCostumerCollection CostumerList = new clsCostumerCollection();
-
-            if (Convert.ToInt32(CostumerID) == -1)
-            {
-                CostumerList.ThisCostumer = ACostumer;
-                CostumerList.Add();
-            }
-            else
-            {
-                CostumerList.ThisCostumer.Find(Convert.ToInt32(CostumerID));
-                CostumerList.ThisCostumer = ACostumer;
-                CostumerList.Update();
-            }
+            //add the record
+            AddressBook.Add();
+            //all done so redirect back to the main page
             Response.Redirect("CostumerList.aspx");
         }
         else
         {
-            lblError.Text = Error;
+            //report an error
+            lblError.Text = "There were problems with the data entered " + Error;
         }
     }
 
-    protected void btnFind_Click(object sender, EventArgs e)
+    void DisplayCostumer()
     {
-        clsCostumer ACostumer = new clsCostumer();
-        Int32 CostumerID;
-        Boolean Found = false;
-        CostumerID = Convert.ToInt32(txtCostumerID.Text);
-
-        Found = ACostumer.Find(CostumerID);
-
-        if (Found == true)
-        {
-
-            Active.Checked = ACostumer.Active;
-            txtCostumerDOB.Text = "" + ACostumer.CostumerDOB;
-            txtEmail.Text = ACostumer.Email.ToString();
-            txtCostumerAddress.Text = ACostumer.ToString();
-            txtName.Text = ACostumer.ToString();
-            txtCostumerID.Text = ACostumer.ToString();
-
-        }
+        //create an instance of the address book
+        clsCostumerCollection AddressBook = new clsCostumerCollection();
+        //find the record to update
+        AddressBook.ThisCostumer.Find(CostumerID);
+        //display the data for this record
+        clsCostumerCollection AddressBook = new clsCostumerCollection();
+        txtCostumerID.Text = ACostumer.CostumerID.ToString();
+        txtName.Text = ACostumer.Name.ToString();
+        txtCostumerAddress.Text = ACostumer.CostumerAddress.ToString();
+        txtCostumerDOB.Text = ACostumer.CostumerDOB.ToString();
+        txtEmail.Text = ACostumer.Email.ToString();
 
     }
-
     protected void btnCan_Click(object sender, EventArgs e)
     {
         Response.Redirect("CostumerList.aspx");
