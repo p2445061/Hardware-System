@@ -12,8 +12,6 @@ public partial class ACostumer : System.Web.UI.Page
 {
     Int32 CostumerID;
 
-
-
     protected void Page_Load(object sender, EventArgs e)
     {
         CostumerID = Convert.ToInt32(Session["CostumerID"]);
